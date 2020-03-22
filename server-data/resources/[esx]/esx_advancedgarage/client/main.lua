@@ -101,6 +101,7 @@ function OpenMenuGarage(PointType)
 	end
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'garage_menu', {
+		css		 = 'garage',
 		title    = _U('garage'),
 		align    = 'top-left',
 		elements = elements
@@ -209,6 +210,7 @@ function ListOwnedCarsMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'spawn_owned_car', {
+			css		 = 'garage',
 			title    = _U('garage_cars'),
 			align    = 'top-left',
 			elements = elements
@@ -294,6 +296,7 @@ function ListOwnedBoatsMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'spawn_owned_boat', {
+			css		 = 'garage',
 			title    = _U('garage_boats'),
 			align    = 'top-left',
 			elements = elements
@@ -379,6 +382,7 @@ function ListOwnedAircraftsMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'spawn_owned_aircraft', {
+			css		 = 'garage',
 			title    = _U('garage_aircrafts'),
 			align    = 'top-left',
 			elements = elements
@@ -534,6 +538,7 @@ function ReturnOwnedCarsMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_car', {
+			css		 = 'fourriere',
 			title    = _U('pound_cars'),
 			align    = 'top-left',
 			elements = elements
@@ -589,6 +594,7 @@ function ReturnOwnedBoatsMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_boat', {
+			css		 = 'fourriere',
 			title    = _U('pound_boats'),
 			align    = 'top-left',
 			elements = elements
@@ -644,6 +650,7 @@ function ReturnOwnedAircraftsMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_aircraft', {
+			css		 = 'fourriere',
 			title    = _U('pound_aircrafts'),
 			align    = 'top-left',
 			elements = elements
@@ -699,6 +706,7 @@ function ReturnOwnedPolicingMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_policing', {
+			css		 = 'fourriere',
 			title    = _U('pound_police'),
 			align    = 'top-left',
 			elements = elements
@@ -754,6 +762,7 @@ function ReturnOwnedAmbulanceMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_ambulance', {
+			css		 = 'fourriere',
 			title    = _U('pound_ambulance'),
 			align    = 'top-left',
 			elements = elements
@@ -808,6 +817,7 @@ function ReturnOwnedTaxiMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_taxi', {
+			css		 = 'fourriere',
 			title    = _U('pound_taxi'),
 			align    = 'top-left',
 			elements = elements
@@ -862,6 +872,7 @@ function ReturnOwnedMechanicMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_mechanic', {
+			css		 = 'fourriere',
 			title    = _U('pound_mechanic'),
 			align    = 'top-left',
 			elements = elements
@@ -890,6 +901,7 @@ function RepairVehicle(apprasial, vehicle, vehicleProps)
 	}
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'delete_menu', {
+		css		 = 'garage',
 		title    = _U('damaged_vehicle'),
 		align    = 'top-left',
 		elements = elements
