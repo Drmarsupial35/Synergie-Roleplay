@@ -9,7 +9,7 @@ local ping = GetPlayerPing(source)
 local steamhex = GetPlayerIdentifier(source)
 local connect = {
         {
-            ["color"] = "dc322f",
+            ["color"] = "8663711",
             ["title"] = "Un joueur s'est connecté au serveur",
             ["description"] = "Joueur: **"..name.."**\nIP: **"..ip.."**\n Steam ID: **"..steamhex.."**",
 	        ["footer"] = {
@@ -29,7 +29,7 @@ local ping = GetPlayerPing(source)
 local steamhex = GetPlayerIdentifier(source)
 local disconnect = {
         {
-            ["color"] = "dc322f",
+            ["color"] = "8663711",
             ["title"] = "Un joueur s'est déconnecté au serveur",
             ["description"] = "Joueur: **"..name.."** \nRaison: **"..reason.."**\nIP: **"..ip.."**\n Steam ID: **"..steamhex.."**",
 	        ["footer"] = {
