@@ -127,7 +127,7 @@ AddEventHandler('esx_society:washMoney', function(society, amount)
   local account = xPlayer.getAccount('black_money')
 
   if amount > 0 and account.money >= amount then
-TriggerEvent("esx:washingmoneyalert",xPlayer.name,amount)
+    TriggerEvent("esx:washingmoneyalert",xPlayer.name,amount)
     xPlayer.removeAccountMoney('black_money', amount)
 
       MySQL.Async.execute(
@@ -168,7 +168,7 @@ AddEventHandler('esx_society:removeVehicleFromGarage', function(societyName, veh
   local society = GetSociety(societyName)
 
   TriggerEvent('esx_datastore:getSharedDataStore', society.datastore, function(store)
-    
+
     local garage = store.get('garage') or {}
 
     for i=1, #garage, 1 do
@@ -352,7 +352,7 @@ ESX.RegisterServerCallback('esx_society:setJob', function(source, cb, identifier
 
 	if xPlayer ~= nil then
 		xPlayer.setJob(job, grade)
-		
+
 		if type == 'hire' then
 			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job))
 		elseif type == 'promote' then
@@ -383,7 +383,7 @@ ESX.RegisterServerCallback('esx_society:setJob2', function(source, cb, identifie
 
 	if xPlayer ~= nil then
 		xPlayer.setJob2(job2, grade2)
-		
+
 		if type == 'hire' then
 			TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_been_hired', job2))
 		elseif type == 'promote' then
