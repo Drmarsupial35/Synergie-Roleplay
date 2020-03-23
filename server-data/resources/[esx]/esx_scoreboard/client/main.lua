@@ -109,7 +109,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 
-		if IsControlJustReleased(0, 57) and IsInputDisabled(0) then
+		if IsControlJustReleased(0, 83) and IsInputDisabled(0) then
 			ToggleScoreBoard()
 			Citizen.Wait(200)
 
@@ -145,7 +145,7 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000 * 60) -- every minute
 		playMinute = playMinute + 1
-	
+
 		if playMinute == 60 then
 			playMinute = 0
 			playHour = playHour + 1
