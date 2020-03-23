@@ -45,7 +45,7 @@ Config.ShowTemp = false
 
 -- simple localization
 Config.Language = {
-    joining = "\xF0\x9F\x8E\x89Joining...",
+    joining = "\xF0\x9F\x8E\x89Connexion au serveur...",
     connecting = "\xE2\x8F\xB3Connexion...",
     idrr = "\xE2\x9D\x97Erreur: Impossible d'obtenir vos identifiants, essayez de redémarrer.",
     err = "\xE2\x9D\x97Une erreur s'est produite",
