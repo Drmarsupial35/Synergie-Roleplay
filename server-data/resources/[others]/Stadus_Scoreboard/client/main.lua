@@ -121,12 +121,12 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 
-		if IsControlPressed(0, Keys['=']) then
+		if IsControlPressed(0, Keys['=']) and IsInputDisabled(0) then
 			ToggleScoreBoard()
 			Citizen.Wait(200)
 
 		-- D-pad up on controllers works, too!
-		elseif IsControlPressed(0, 172) then
+		elseif IsControlPressed(0, 172) and not IsInputDisabled(0) then
 			ToggleScoreBoard()
 			Citizen.Wait(200)
 		end
