@@ -55,7 +55,7 @@ async def on_raw_reaction_add(payload):
             guild  = client.get_guild(661382511976513556) # Le serveur FiveM
             member = guild.get_member(payload.user_id)    # L'utilisateur
             staff  = guild.get_role(661540428704645121)   # Le role @⚙️Staff
-            id = f"{uuid.uuid4()}"[0:8]
+            id = f"{uuid.uuid4()} "[0:8]
             staff_channel = client.get_channel(702636485245010052)
 
             # Liste des permissions (Staff + L'utilisateurs peuvent lire le channel)
