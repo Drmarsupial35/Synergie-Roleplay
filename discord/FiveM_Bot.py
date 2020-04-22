@@ -121,20 +121,11 @@ async def on_message(message):
 
     # Vérifie que le message envoyé n'a pas été envoyé par le Bot lui-même
     if not (author == client.user):
-
         if content.startswith('.embed'):
             embed = discord.Embed(title='Title', description='Desc', color=0x006f00)
             embed.add_field(name='Field1', value='hi', inline=False)
             embed.add_field(name='Field2', value='hi2', inline=False)
             await channel.send(content='Hello World!', embed=embed)
-
-        # Affiche l'image bon toutou
-        elif message.content.startswith('.test'):
-            await channel.send(file=discord.File('./ressources/img/BonToutou.jpg'))
-
-        #Affiche la liste des commandes disponibles avec le bot
-        elif message.content.startswith('.help'):
-            await channel.send('Il n\'y a pas vraiment de commandes pour le moment. Dommage ! 😥')
 
         elif message.content.startswith('.add_react'):
             if staff_role in author.roles:
