@@ -36,12 +36,12 @@ async def on_raw_reaction_add(payload):
 
     # Création d'un ticket lorsque l'utilisateur réagit au message
     if payload.message_id == 702548411055997071:
-        if pyaload.emoji.name == ":telephone:":
+        if payload.emoji.name == "☎":
             guild  = client.get_guild(661382511976513556) # Le serveur FiveM
             member = guild.get_member(payload.user_id)    # L'utilisateur
             id = uuid.uuid4()
             await guild.create_text_channel('ticket-'.id)
-            
+
 
 
 
