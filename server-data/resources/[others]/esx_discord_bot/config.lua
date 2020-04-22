@@ -11,7 +11,7 @@ Config.webhook                = "https://discordapp.com/api/webhooks/69128066454
 
 settings = {
 	LogKills = true, -- Log when a player kill an other player.
-	LogEnterPoliceVehicle = false, -- Log when an player enter in a police vehicle.
+	LogEnterPoliceVehicle = true, -- Log when an player enter in a police vehicle.
 	LogEnterBlackListedVehicle = true, -- Log when a player enter in a blacklisted vehicle.
 	LogPedJacking = true, -- Log when a player is jacking a car
 	LogChatServer = true, -- Log when a player is talking in the chat , /command works too.
