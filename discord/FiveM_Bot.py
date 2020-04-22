@@ -7,7 +7,7 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print('*** CONNEXION EN TANT QUE : {0.user}'.format(client),' ***')
-    await client.change_presence(activity=discord.Game(name='Synergie Roleplay'))
+    await client.change_presence(activity=discord.Game(name='IP : 185.44.81.48'))
 
 
 #Lorsqu'une personne se connecte sur le serveur
@@ -23,6 +23,7 @@ async def on_member_join(member):
 # Lorsqu'une réaction est ajoutée à un message
 @client.event
 async def on_raw_reaction_add(payload):
+    # Ajout du role @👨Citoyen lorsque l'utilisateur réagit au messagge d'accueil
     if payload.message_id == 664239891273744395:
         if payload.emoji.name == "✅":
             guild = client.get_guild(661382511976513556) # Le serveur FiveM
@@ -34,6 +35,7 @@ async def on_raw_reaction_add(payload):
 
 @client.event
 async def on_raw_reaction_remove(payload):
+    # Suppression du role @👨Citoyen si l'utilisateur parviens à retirer sa réaction au message d'accueil
     if payload.message_id == 664239891273744395:
         if payload.emoji.name == "✅":
             guild = client.get_guild(661382511976513556) # Le serveur FiveM
@@ -45,7 +47,7 @@ async def on_raw_reaction_remove(payload):
 
 
 
-
+#Lorsqu'un message est envoyé
 @client.event
 async def on_message(message):
     channel = message.channel # Le channel dans lequel le message a été envoyé
