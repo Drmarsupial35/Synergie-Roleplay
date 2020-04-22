@@ -11,7 +11,7 @@ Citizen.CreateThread(function()
     --- METH ---
     BikerMethLab = exports['bob74_ipl']:GetBikerMethLabObject()
     BikerMethLab.Ipl.Interior.Load()
-    BikerMethLab.Style.Set(BikerMethLab.Style.basic)
+    BikerMethLab.Style.Set(BikerMethLab.Style.upgrade)
     BikerMethLab.Security.Set(BikerMethLab.Security.upgrade)
     BikerMethLab.Details.Enable(BikerMethLab.Details.production, true)
     RefreshInterior(BikerMethLab.interiorId)
