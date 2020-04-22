@@ -1,5 +1,6 @@
 import discord
 from datetime import datetime
+import uuid
 
 client = discord.Client()
 
@@ -26,22 +27,33 @@ async def on_raw_reaction_add(payload):
     # Ajout du role @👨Citoyen lorsque l'utilisateur réagit au messagge d'accueil
     if payload.message_id == 664239891273744395:
         if payload.emoji.name == "✅":
-            guild = client.get_guild(661382511976513556) # Le serveur FiveM
-            citoyen = guild.get_role(661386494254120971) # Le role @👨Citoyen
-            sansPapiers = guild.get_role(664210809940869157) # Le role @📦Sans Papier
-            member = guild.get_member(payload.user_id)
+            guild       = client.get_guild(661382511976513556) # Le serveur FiveM
+            citoyen     = guild.get_role(661386494254120971)   # Le role @👨Citoyen
+            sansPapiers = guild.get_role(664210809940869157)   # Le role @📦Sans Papier
+            member      = guild.get_member(payload.user_id)    # L'utilisateur
             await member.add_roles(citoyen)
             await member.remove_roles(sansPapiers)
+
+    # Création d'un ticket lorsque l'utilisateur réagit au message
+    if payload.message_id == 702548411055997071:
+        if pyaload.emoji.name == ":telephone:":
+            guild  = client.get_guild(661382511976513556) # Le serveur FiveM
+            member = guild.get_member(payload.user_id)    # L'utilisateur
+            id = uuid.uuid4()
+            await guild.create_text_channel('ticket-'.id)
+            
+
+
 
 @client.event
 async def on_raw_reaction_remove(payload):
     # Suppression du role @👨Citoyen si l'utilisateur parviens à retirer sa réaction au message d'accueil
     if payload.message_id == 664239891273744395:
         if payload.emoji.name == "✅":
-            guild = client.get_guild(661382511976513556) # Le serveur FiveM
-            citoyen = guild.get_role(661386494254120971) # Le role @👨Citoyen
-            sansPapiers = guild.get_role(664210809940869157) # Le role @📦Sans Papier
-            member = guild.get_member(payload.user_id)
+            guild       = client.get_guild(661382511976513556) # Le serveur FiveM
+            citoyen     = guild.get_role(661386494254120971)   # Le role @👨Citoyen
+            sansPapiers = guild.get_role(664210809940869157)   # Le role @📦Sans Papier
+            member      = guild.get_member(payload.user_id)
             await member.add_roles(sansPapiers)
             await member.remove_roles(citoyen)
 
