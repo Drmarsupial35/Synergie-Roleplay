@@ -145,7 +145,7 @@ async def on_message(message):
                     emoji  = args[1]
 
                     messages = await channel.history(limit=123).flatten()
-                    msg = messages[len(messages)-1]
+                    msg = messages[0]
                     await msg.add_reaction(emoji)
 
 # Token du Bot utilisé pour se connecté
