@@ -41,7 +41,8 @@ async def on_raw_reaction_add(payload):
             await member.remove_roles(sansPapiers)
 
         else:
-            await msg.remove_reaction(payload.emoji.name, member)
+            if not (payload.user_id == client.user.id):
+                await msg.remove_reaction(payload.emoji.name, member)
 
 
     # Création d'un ticket lorsque l'utilisateur réagit au message
@@ -53,7 +54,7 @@ async def on_raw_reaction_add(payload):
         if payload.emoji.name == "📡":
             guild  = client.get_guild(661382511976513556) # Le serveur FiveM
             member = guild.get_member(payload.user_id)    # L'utilisateur
-            staff  = guild.get_role(661540428704645121)   # Le grade @⚙️Staff
+            staff  = guild.get_role(661540428704645121)   # Le role @⚙️Staff
             id = f"{uuid.uuid4()}"[0:8]
             staff_channel = client.get_channel(702636485245010052)
 
@@ -83,7 +84,8 @@ async def on_raw_reaction_add(payload):
 
         else:
             # Suppression de la réaction de l'utilisateur s'il n'a pas mis la bonne
-            await msg.remove_reaction(payload.emoji.name, member)
+            if not (payload.user_id == client.user.id):
+                await msg.remove_reaction(payload.emoji.name, member)
 
     #Suppression du salon lorsque l'utilisateur réagit au message
     elif "ticket-" in channel.name:
@@ -99,7 +101,7 @@ async def on_raw_reaction_remove(payload):
             guild       = client.get_guild(661382511976513556) # Le serveur FiveM
             citoyen     = guild.get_role(661386494254120971)   # Le role @👨Citoyen
             sansPapiers = guild.get_role(664210809940869157)   # Le role @📦Sans Papier
-            member      = guild.get_member(payload.user_id)
+            member      = guild.get_member(payload.user_id)    # Le role @⚙️Staff
             await member.add_roles(sansPapiers)
             await member.remove_roles(citoyen)
 
@@ -107,9 +109,11 @@ async def on_raw_reaction_remove(payload):
 #Lorsqu'un message est envoyé
 @client.event
 async def on_message(message):
-    channel = message.channel # Le channel dans lequel le message a été envoyé
-    author = message.author # L'auteur du message
-    content = message.content # Le contenu du message envoyé
+    guild      = client.get_guild(661382511976513556) # Le serveur FiveM
+    channel    = message.channel                      # Le channel dans lequel le message a été envoyé
+    author     = message.author                       # L'auteur du message
+    content    = message.content                      # Le contenu du message envoyé
+    staff_role = guild.get_role(661540428704645121)
 
     # Vérifie que le message envoyé n'a pas été envoyé par le Bot lui-même
     if not (author == client.user):
@@ -121,12 +125,25 @@ async def on_message(message):
             await channel.send(content='Hello World!', embed=embed)
 
         # Affiche l'image bon toutou
-        if message.content.startswith('%test'):
+        elif message.content.startswith('.test'):
             await channel.send(file=discord.File("./ressources/img/BonToutou.jpg"))
 
         #Affiche la liste des commandes disponibles avec le bot
-        if message.content.startswith("%help"):
+        elif message.content.startswith(".help"):
             await channel.send("Il n'y a pas vraiment de commandes pour le moment. Dommage ! 😥")
+
+        elif message.content.startswith(".add_react"):
+            if staff_role in author.roles:
+                await channel.purge(limit=1)
+                args = content.split()
+                if len(args) < 2:
+                    await channel.send(f"{author.mention} Cette commande demande 1 argument (l'emoji à ajouter)")
+                else:
+                    emoji  = args[1]
+
+                    messages = await channel.history(limit=123).flatten()
+                    msg = messages[len(messages)-1]
+                    await msg.add_reaction(emoji)
 
 # Token du Bot utilisé pour se connecté
 client.run('NTgxMjI1NzIwNzg1NjY2MDQ4.XUn3rw.hGkiJAirCDV52g9h4Kdo9IF4bSw')
