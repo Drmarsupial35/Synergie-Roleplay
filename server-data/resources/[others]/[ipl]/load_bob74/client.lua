@@ -6,12 +6,12 @@ Citizen.CreateThread(function()
     BikerCocaine.Security.Set(BikerCocaine.Security.upgrade)
     BikerCocaine.Details.Enable({BikerCocaine.Details.cokeUpgrade1, BikerCocaine.Details.cokeUpgrade2}, false)
     BikerCocaine.Details.Enable({BikerCocaine.Details.cokeBasic1, BikerCocaine.Details.cokeBasic2, BikerCocaine.Details.cokeBasic3}, true)
-    RefreshInterior(BikerCocaine.interiorId)Z
+    RefreshInterior(BikerCocaine.interiorId)
 
     --- METH ---
     BikerMethLab = exports['bob74_ipl']:GetBikerMethLabObject()
     BikerMethLab.Ipl.Interior.Load()
-    BikerMethLab.Style.Set(BikerMethLab.Style.none)
+    BikerMethLab.Style.Set(BikerMethLab.Style.upgrade)
     BikerMethLab.Security.Set(BikerMethLab.Security.upgrade)
     BikerMethLab.Details.Enable(BikerMethLab.Details.production, true)
     RefreshInterior(BikerMethLab.interiorId)
