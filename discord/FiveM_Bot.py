@@ -80,7 +80,7 @@ async def on_raw_reaction_add(payload):
             # Création du salon
             ticket_channel = await guild.create_text_channel('ticket' + id, overwrites=permissions, category=cat)
             #Envoie d'un message dans le channel Staff et dans celui du ticket
-            await staff_channel.send('L\'utilisateur **' + member.nick '** (*' +member + '*) à créé un ticket (' + ticket_channel.mention + ') !')
+            await staff_channel.send('L\'utilisateur **' + member.nick + '** (*' +member + '*) à créé un ticket (' + ticket_channel.mention + ') !')
             embed = discord.Embed(title='Que devez-vous faire ?', description='Ecrivez ici votre demande et un membre du staff viendra vers vous rapidement !\n Une fois votre ticket résolu, réagissez à ce message avec l\'emoji 🔒', color=0x006f00)
             ticket_msg = await ticket_channel.send(content= member.mention + 'vous avez bien créer votre ticket !', embed=embed)
             await ticket_msg.add_reaction('🔒') # Ajout d'une réaction du bot
