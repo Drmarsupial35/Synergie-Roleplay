@@ -9,13 +9,13 @@ Config.Pads = {
 		Text = 'Appuyez sur ~INPUT_CONTEXT~ pour entrer dans le ~y~bâtiment~s~.',
 		Marker = vector3(-354.316, 4825.340, 143.296),
 		MarkerSettings = {r = 255, g = 55, b = 55, a = 100, type = 1, x = 1.5, y = 1.5, z = 0.5},
-		TeleportPoint = { coords = vector3(902.097, -3182.502, -98.057), h = 94.585 },
+		TeleportPoint = { coords = vector3(893.22, -3190.150, -97.032), h = 185.129 },
 		afficher = false
 	},
 
 	{
 		Text = 'Appuyez sur ~INPUT_CONTEXT~ pour sortir du ~y~bâtiment~s~.',
-		Marker = vector3(902.097, -3182.502, -98.057),
+		Marker = vector3(893.22, -3190.150, -97.032),
 		MarkerSettings = {r = 255, g = 55, b = 55, a = 100, type = 1, x = 1.5, y = 1.5, z = 0.5},
 		TeleportPoint = { coords = vector3(-354.316, 4825.340, 143.296), h = 139.758 },
 		afficher = true
