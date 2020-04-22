@@ -19,7 +19,7 @@ async def on_member_join(member):
     sansPapiers = guild.get_role(664210809940869157) # Le role @📦Sans Papier
     aeroport = client.get_channel(665701196505415702) # Le channel #aéroport
     await member.add_roles(sansPapiers)
-    await aeroport.send(":tada:Bienvenue " + member.mention + " !\n:warning:N'oublie pas de mettre un Prénom & Nom RP !")
+    await aeroport.send(':tada:Bienvenue ' + member.mention + ' !\n:warning:N\'oublie pas de mettre un Prénom & Nom RP !')
 
 
 # Lorsqu'une réaction est ajoutée à un message
@@ -32,7 +32,7 @@ async def on_raw_reaction_add(payload):
         for msg in await channel.pins():
             if msg.id == 664239891273744395:
                 break
-        if payload.emoji.name == "✅":
+        if payload.emoji.name == '✅':
 
             guild       = client.get_guild(661382511976513556) # Le serveur FiveM
             citoyen     = guild.get_role(661386494254120971)   # Le role @👨Citoyen
@@ -52,7 +52,7 @@ async def on_raw_reaction_add(payload):
         for msg in await channel.pins():
             if msg.id == 702548411055997071:
                 break
-        if payload.emoji.name == "📡":
+        if payload.emoji.name == '📡':
             guild  = client.get_guild(661382511976513556) # Le serveur FiveM
             member = guild.get_member(payload.user_id)    # L'utilisateur
             staff  = guild.get_role(661540428704645121)   # Le role @⚙️Staff
@@ -78,12 +78,12 @@ async def on_raw_reaction_add(payload):
             await msg.remove_reaction(payload.emoji.name, member)
 
             # Création du salon
-            ticket_channel = await guild.create_text_channel(f"ticket-{id}", overwrites=permissions, category=cat)
+            ticket_channel = await guild.create_text_channel(f'ticket-{id}', overwrites=permissions, category=cat)
             #Envoie d'un message dans le channel Staff et dans celui du ticket
-            await staff_channel.send(f"L'utilisateur **{member.nick}** (*{member}*) à créé un ticket ({ticket_channel.mention}) !")
-            embed = discord.Embed(title="Que devez-vous faire ?", description="Ecrivez ici votre demande et un membre du staff viendra vers vous rapidement !\n Une fois votre ticket résolu, réagissez à ce message avec l'emoji 🔒", color=0x006f00)
-            ticket_msg = await ticket_channel.send(content=f"{member.mention} vous avez bien créer votre ticket !", embed=embed)
-            await ticket_msg.add_reaction("🔒") # Ajout d'une réaction du bot
+            await staff_channel.send(f'L\'utilisateur **{member.nick}** (*{member}*) à créé un ticket ({ticket_channel.mention}) !')
+            embed = discord.Embed(title='Que devez-vous faire ?', description='Ecrivez ici votre demande et un membre du staff viendra vers vous rapidement !\n Une fois votre ticket résolu, réagissez à ce message avec l\'emoji 🔒', color=0x006f00)
+            ticket_msg = await ticket_channel.send(content=f'{member.mention} vous avez bien créer votre ticket !', embed=embed)
+            await ticket_msg.add_reaction('🔒') # Ajout d'une réaction du bot
 
         else:
             # Suppression de la réaction de l'utilisateur s'il n'a pas mis la bonne
@@ -91,8 +91,8 @@ async def on_raw_reaction_add(payload):
                 await msg.remove_reaction(payload.emoji.name, member)
 
     #Suppression du salon lorsque l'utilisateur réagit au message
-    elif "ticket-" in channel.name:
-        if payload.emoji.name == "🔒":
+    elif 'ticket-' in channel.name:
+        if payload.emoji.name == '🔒':
             if not (payload.user_id == client.user.id):
                 await channel.delete()
 
@@ -100,7 +100,7 @@ async def on_raw_reaction_add(payload):
 async def on_raw_reaction_remove(payload):
     # Suppression du role @👨Citoyen si l'utilisateur parviens à retirer sa réaction au message d'accueil
     if payload.message_id == 664239891273744395:
-        if payload.emoji.name == "✅":
+        if payload.emoji.name == '✅':
             guild       = client.get_guild(661382511976513556) # Le serveur FiveM
             citoyen     = guild.get_role(661386494254120971)   # Le role @👨Citoyen
             sansPapiers = guild.get_role(664210809940869157)   # Le role @📦Sans Papier
@@ -122,25 +122,25 @@ async def on_message(message):
     if not (author == client.user):
 
         if content.startswith('.embed'):
-            embed = discord.Embed(title="Title", description="Desc", color=0x006f00)
-            embed.add_field(name="Field1", value="hi", inline=False)
-            embed.add_field(name="Field2", value="hi2", inline=False)
+            embed = discord.Embed(title='Title', description='Desc', color=0x006f00)
+            embed.add_field(name='Field1', value='hi', inline=False)
+            embed.add_field(name='Field2', value='hi2', inline=False)
             await channel.send(content='Hello World!', embed=embed)
 
         # Affiche l'image bon toutou
         elif message.content.startswith('.test'):
-            await channel.send(file=discord.File("./ressources/img/BonToutou.jpg"))
+            await channel.send(file=discord.File('./ressources/img/BonToutou.jpg'))
 
         #Affiche la liste des commandes disponibles avec le bot
-        elif message.content.startswith(".help"):
-            await channel.send("Il n'y a pas vraiment de commandes pour le moment. Dommage ! 😥")
+        elif message.content.startswith('.help'):
+            await channel.send('Il n\'y a pas vraiment de commandes pour le moment. Dommage ! 😥')
 
-        elif message.content.startswith(".add_react"):
+        elif message.content.startswith('.add_react'):
             if staff_role in author.roles:
                 await channel.purge(limit=1)
                 args = content.split()
                 if len(args) < 2:
-                    await channel.send(f"{author.mention} Cette commande demande 1 argument (l'emoji à ajouter)")
+                    await channel.send(f'{author.mention} Cette commande demande 1 argument (l\'emoji à ajouter)')
                 else:
                     emoji  = args[1]
 
