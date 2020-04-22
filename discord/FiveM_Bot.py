@@ -118,7 +118,7 @@ async def on_message(message):
     # Vérifie que le message envoyé n'a pas été envoyé par le Bot lui-même
     if not (author == client.user):
 
-        if content.startswith('Bonjour'):
+        if content.startswith('.embed'):
             embed = discord.Embed(title="Title", description="Desc", color=0x006f00)
             embed.add_field(name="Field1", value="hi", inline=False)
             embed.add_field(name="Field2", value="hi2", inline=False)
