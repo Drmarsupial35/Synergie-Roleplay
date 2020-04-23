@@ -115,6 +115,7 @@ async def on_message(message):
     channel    = message.channel                      # Le channel dans lequel le message a été envoyé
     author     = message.author                       # L'auteur du message
     content    = message.content                      # Le contenu du message envoyé
+    clean_content = message.clean_content             # Le contenu du message (sans les @ et #)
     staff_role = guild.get_role(661540428704645121)
     logs_channel = client.get_channel(702538641343250452)
 
@@ -138,7 +139,7 @@ async def on_message(message):
             minute = "0" + minute
 
         date = day + "/" + month + " " + hour + "h" + minute
-        c = "**" + author.nick + "** (*" + author.name + "*) - **" + channel.name + "** (*" + date + "*)\n" + content
+        c = "**" + author.nick + "** (*" + author.name + "*) - **" + channel.name + "** (*" + date + "*)\n" + clean_content
         await logs_channel.send(content = c)
 
         if content.startswith('.create_embed'):
