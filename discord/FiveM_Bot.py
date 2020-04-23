@@ -120,11 +120,28 @@ async def on_message(message):
 
     # Vérifie que le message envoyé n'a pas été envoyé par le Bot lui-même
     if not (author == client.user):
+
+        #Système de logs
         date = datetime.today()
-        if len(str(date.month)) == 1:
-            month = "0" + str(date.month)
-        date = str(date.day) + "/" + month + " " + str(date.hour + 2) + "h" + str(date.minute)
-        await logs_channel.send("**" + author.nick + "** (*" + author.name + "*) - **" + channel.name + "** (*" + date + "*)\n" + content)
+        day = str(date.day)
+        month = str(date.month +2)
+        hour = str(date.hour)
+        minute = str(date.minute)
+
+        if len(day) == 1:
+            day = "0" + day
+        if len(month) == 1:
+            month = "0" + month
+        if len(hour) == 1:
+            hour = "0" + hour
+        if len(minute) == 1:
+            minute = "0" + minute
+
+        date = day + "/" + month + " " + hour + "h" + minute
+        c = "**" + author.nick + "** (*" + author.name + "*) - **" + channel.name + "** (*" + date + "*)\n" + content
+        mention = discord.AllowedMentions(everyone=False, users=False, roles=False)
+        await logs_channel.send(content = c, allowed_mentions = mention)
+
         if content.startswith('.create_embed'):
             if staff_role in author.roles:
                 await channel.purge(limit=1)
