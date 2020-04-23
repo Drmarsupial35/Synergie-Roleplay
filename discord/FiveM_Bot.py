@@ -124,7 +124,7 @@ async def on_message(message):
         #Système de logs
         date = datetime.today()
         day = str(date.day)
-        month = str(date.month +2)
+        month = str(date.month)
         hour = str(date.hour)
         minute = str(date.minute)
 
