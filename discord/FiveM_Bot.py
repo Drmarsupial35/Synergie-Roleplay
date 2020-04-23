@@ -1,6 +1,7 @@
 import discord
 import random
 import string
+import datetime
 from datetime import datetime
 
 client = discord.Client()
@@ -115,13 +116,18 @@ async def on_message(message):
     author     = message.author                       # L'auteur du message
     content    = message.content                      # Le contenu du message envoyé
     staff_role = guild.get_role(661540428704645121)
+    logs_channel = client.get_channel(702538641343250452)
 
     # Vérifie que le message envoyé n'a pas été envoyé par le Bot lui-même
     if not (author == client.user):
+        date = datetime.today()
+        if len(str(date.month)) == 1:
+            month = "0" + str(date.month)
+        date = str(date.day) + "/" + month + " " + str(date.hour + 2) + "h" + str(date.minute)
+        await logs_channel.send("**" + author.nick + "** (*" + author.name + "*) - **" + channel.name + "** (*" + date + "*)\n" + content)
         if content.startswith('.create_embed'):
             if staff_role in author.roles:
                 await channel.purge(limit=1)
-                print
                 args = content.split("\"")
                 for m in args:
                     if m == '' or m == ' ':
