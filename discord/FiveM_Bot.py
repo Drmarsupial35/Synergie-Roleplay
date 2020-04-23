@@ -26,6 +26,8 @@ async def on_member_join(member):
 @client.event
 async def on_raw_reaction_add(payload):
     channel = client.get_channel(payload.channel_id)
+    guild  = client.get_guild(661382511976513556) # Le serveur FiveM
+    member = guild.get_member(payload.user_id)    # L'utilisateur
     # Ajout du role @👨Citoyen lorsque l'utilisateur réagit au message d'accueil
     if payload.message_id == 664239891273744395:
         if not (payload.user_id == client.user.id):
@@ -34,11 +36,8 @@ async def on_raw_reaction_add(payload):
                 if msg.id == 664239891273744395:
                     break
             if payload.emoji.name == '✅':
-
-                guild       = client.get_guild(661382511976513556) # Le serveur FiveM
                 citoyen     = guild.get_role(661386494254120971)   # Le role @👨Citoyen
                 sansPapiers = guild.get_role(664210809940869157)   # Le role @📦Sans Papier
-                member      = guild.get_member(payload.user_id)    # L'utilisateur
                 await member.add_roles(citoyen)
                 await member.remove_roles(sansPapiers)
 
@@ -54,9 +53,7 @@ async def on_raw_reaction_add(payload):
             for msg in await channel.pins():
                 if msg.id == 702548411055997071:
                     break
-            if payload.emoji.name == '📡':
-                guild  = client.get_guild(661382511976513556) # Le serveur FiveM
-                member = guild.get_member(payload.user_id)    # L'utilisateur
+            if payload.emoji.name == '🔍':
                 staff  = guild.get_role(661540428704645121)   # Le role @⚙️Staff
 
                 id = ''.join([random.choice(string.ascii_letters
@@ -121,17 +118,30 @@ async def on_message(message):
 
     # Vérifie que le message envoyé n'a pas été envoyé par le Bot lui-même
     if not (author == client.user):
-        if content.startswith('.embed'):
-            embed = discord.Embed(title='Title', description='Desc', color=0x006f00)
-            embed.add_field(name='Field1', value='hi', inline=False)
-            embed.add_field(name='Field2', value='hi2', inline=False)
-            await channel.send(content='Hello World!', embed=embed)
+        if content.startswith('.create_embed'):
+            if staff_role in author.roles:
+                await channel.purge(limit=1)
+                print
+                args = content.split("\"")
+                for m in args:
+                    if m == '' or m == ' ':
+                        args.remove(m)
+                    else:
+                        m.strip()
+                if len(args) < 4:
+                    await channel.send(author.mention + ' Cette commande demande 3 arguments (Le titre et la description du message, ainsi que la couleur de celui-ci)')
+                else:
+                    title = args[1]
+                    desc  = args[2]
+                    color = int(args[3])
+                    embed = discord.Embed(title=title, description=desc, color=color)
+                    await channel.send(content='', embed=embed)
 
         elif message.content.startswith('.add_react'):
             if staff_role in author.roles:
                 await channel.purge(limit=1)
                 args = content.split()
-                if len(args) < 2:
+                if len(args) < 3:
                     await channel.send(author.mention + ' Cette commande demande 2 argument (L\'ID du message et l\'emoji à ajouter)')
                 else:
                     msg_id = int(args[1])
