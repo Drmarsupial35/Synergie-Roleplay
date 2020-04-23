@@ -144,7 +144,6 @@ async def on_message(message):
 
         if content.startswith('.create_embed'):
             if staff_role in author.roles:
-                await channel.purge(limit=1)
                 args = content.split("\"")
                 for m in args:
                     if m == '' or m == ' ':
@@ -159,10 +158,12 @@ async def on_message(message):
                     color = int(args[3])
                     embed = discord.Embed(title=title, description=desc, color=color)
                     await channel.send(content='', embed=embed)
+            else:
+                await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+            await message.delete()
 
         elif message.content.startswith('.add_react'):
             if staff_role in author.roles:
-                await channel.purge(limit=1)
                 args = content.split()
                 if len(args) < 3:
                     await channel.send(author.mention + ' Cette commande demande 2 argument (L\'ID du message et l\'emoji à ajouter)')
@@ -180,9 +181,11 @@ async def on_message(message):
                         await m.add_reaction(emoji)
                     else:
                         await channel.send(author.mention + " Aucun message n'a été trouvé avec cet ID !")
+            else:
+                await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+            await message.delete()
 
         elif message.content.startswith('.help'):
-            await channel.purge(limit=1)
             if staff_role in author.roles:
                 embed = discord.Embed(title='Liste des commandes disponibles :', description='', color=0x006f00)
                 embed.add_field(name=".create_embed <Titre> <Description> <Couleur>", value="Permet de créer un message comme celui-ci", inline=False)
@@ -193,24 +196,25 @@ async def on_message(message):
                 await channel.send(content = author.mention, embed= embed)
             else:
                 await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+            await message.delete()
 
         elif message.content.startswith('.open_reu'):
-            await channel.purge(limit=1)
             if staff_role in author.roles:
                 reu_channel = client.get_channel(661644667749793794)
                 citoyen = guild.get_role(661386494254120971)
                 await reu_channel.set_permissions(citoyen, read_messages=True)
             else:
                 await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+            await message.delete()
 
         elif message.content.startswith('.close_reu'):
-            await channel.purge(limit=1)
             if staff_role in author.roles:
                 reu_channel = client.get_channel(661644667749793794)
                 citoyen = guild.get_role(661386494254120971)
                 await reu_channel.set_permissions(citoyen, read_messages=False)
             else:
                 await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+            await message.delete()
 
 # Token du Bot utilisé pour se connecté
 client.run('NTgxMjI1NzIwNzg1NjY2MDQ4.XUn3rw.hGkiJAirCDV52g9h4Kdo9IF4bSw')
