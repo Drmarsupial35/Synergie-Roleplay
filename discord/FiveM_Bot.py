@@ -180,14 +180,35 @@ async def on_message(message):
                         await m.add_reaction(emoji)
                     else:
                         await channel.send(author.mention + " Aucun message n'a été trouvé avec cet ID !")
+
         elif message.content.startswith('.help'):
             await channel.purge(limit=1)
             if staff_role in author.roles:
                 embed = discord.Embed(title='Liste des commandes disponibles :', description='', color=0x006f00)
                 embed.add_field(name=".create_embed <Titre> <Description> <Couleur>", value="Permet de créer un message comme celui-ci", inline=False)
                 embed.add_field(name=".add_react <ID> <Emoji>", value="Permet d'ajouter une réaction à un message", inline=False)
+                embed.add_field(name=".open_reu", value="Permet d'ouvrir le salon des réunions", inline=False)
+                embed.add_field(name=".close_reu", value="Permet de fermer le salon des réunions", inline=False)
                 embed.add_field(name=".help", value="Permet d'afficher la liste des commandes", inline=False)
                 await channel.send(content = author.mention, embed= embed)
+            else:
+                await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+
+        elif message.content.startswith('.open_reu'):
+            await channel.purge(limit=1)
+            if staff_role in author.roles:
+                reu_channel = client.get_channel(661644667749793794)
+                citoyen = guild.get_role(661386494254120971)
+                await reu_channel.set_permissions(citoyen, read_messages=True)
+            else:
+                await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+
+        elif message.content.startswith('.close_reu'):
+            await channel.purge(limit=1)
+            if staff_role in author.roles:
+                reu_channel = client.get_channel(661644667749793794)
+                citoyen = guild.get_role(661386494254120971)
+                await reu_channel.set_permissions(citoyen, read_messages=False)
             else:
                 await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
 
