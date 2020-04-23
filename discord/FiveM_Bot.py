@@ -139,8 +139,7 @@ async def on_message(message):
 
         date = day + "/" + month + " " + hour + "h" + minute
         c = "**" + author.nick + "** (*" + author.name + "*) - **" + channel.name + "** (*" + date + "*)\n" + content
-        mention = discord.AllowedMentions(everyone=False, users=False, roles=False)
-        await logs_channel.send(content = c, allowed_mentions = mention)
+        await logs_channel.send(content = c)
 
         if content.startswith('.create_embed'):
             if staff_role in author.roles:
