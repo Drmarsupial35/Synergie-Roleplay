@@ -97,7 +97,7 @@ async def on_raw_reaction_add(payload):
 @client.event
 async def on_raw_reaction_remove(payload):
     # Suppression du role @👨Citoyen si l'utilisateur parviens à retirer sa réaction au message d'accueil
-    if payload.message_id == 664239891273744395:
+    if payload.message_id == 702866536175763469:
         if payload.emoji.name == '✅':
             guild       = client.get_guild(661382511976513556) # Le serveur FiveM
             citoyen     = guild.get_role(661386494254120971)   # Le role @👨Citoyen
