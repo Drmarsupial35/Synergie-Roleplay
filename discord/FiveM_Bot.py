@@ -29,11 +29,11 @@ async def on_raw_reaction_add(payload):
     guild  = client.get_guild(661382511976513556) # Le serveur FiveM
     member = guild.get_member(payload.user_id)    # L'utilisateur
     # Ajout du role @👨Citoyen lorsque l'utilisateur réagit au message d'accueil
-    if payload.message_id == 664239891273744395:
+    if payload.message_id == 702866536175763469:
         if not (payload.user_id == client.user.id):
             # On cherche le message dans le salon
             for msg in await channel.pins():
-                if msg.id == 664239891273744395:
+                if msg.id == 702866536175763469:
                     break
             if payload.emoji.name == '✅':
                 citoyen     = guild.get_role(661386494254120971)   # Le role @👨Citoyen
