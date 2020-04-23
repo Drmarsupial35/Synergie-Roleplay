@@ -132,13 +132,21 @@ async def on_message(message):
                 await channel.purge(limit=1)
                 args = content.split()
                 if len(args) < 2:
-                    await channel.send(author.mention + ' Cette commande demande 1 argument (l\'emoji à ajouter)')
+                    await channel.send(author.mention + ' Cette commande demande 2 argument (L\'ID du message et l\'emoji à ajouter)')
                 else:
-                    emoji  = args[1]
+                    msg_id = int(args[1])
+                    emoji  = args[2]
 
                     messages = await channel.history(limit=123).flatten()
-                    msg = messages[0]
-                    await msg.add_reaction(emoji)
+                    trouve = False
+                    for m in messages:
+                        if msg_id == m.id:
+                            trouve = True
+                            break
+                    if trouve:
+                        await m.add_reaction(emoji)
+                    else:
+                        await channel.send(author.mention + " Aucun message n'a été trouvé avec cet ID !")
 
 # Token du Bot utilisé pour se connecté
 client.run('NTgxMjI1NzIwNzg1NjY2MDQ4.XUn3rw.hGkiJAirCDV52g9h4Kdo9IF4bSw')
