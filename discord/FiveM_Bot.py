@@ -47,11 +47,11 @@ async def on_raw_reaction_add(payload):
 
 
     # Création d'un ticket lorsque l'utilisateur réagit au message
-    elif payload.message_id == 702548411055997071:
+    elif payload.message_id == 702861806074593421:
         if not (payload.user_id == client.user.id):
             # On cherche le message dans le salon
             for msg in await channel.pins():
-                if msg.id == 702548411055997071:
+                if msg.id == 702861806074593421:
                     break
             if payload.emoji.name == '🔍':
                 staff  = guild.get_role(661540428704645121)   # Le role @⚙️Staff
@@ -157,6 +157,16 @@ async def on_message(message):
                         await m.add_reaction(emoji)
                     else:
                         await channel.send(author.mention + " Aucun message n'a été trouvé avec cet ID !")
+        elif message.content.startswith('.help'):
+            await channel.purge(limit=1)
+            if staff_role in author.roles:
+                embed = discord.Embed(title='Liste des commandes disponibles :', description='', color=0x006f00)
+                embed.add_field(name=".create_embed <Titre> <Description> <Couleur>", value="Permet de créer un message comme celui-ci", inline=False)
+                embed.add_field(name=".add_react <ID> <Emoji>", value="Permet d'ajouter une réaction à un message", inline=False)
+                embed.add_field(name=".help", value="Permet d'afficher la liste des commandes", inline=False)
+                await channel.send(content = author.mention, embed= embed)
+            else:
+                await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
 
 # Token du Bot utilisé pour se connecté
 client.run('NTgxMjI1NzIwNzg1NjY2MDQ4.XUn3rw.hGkiJAirCDV52g9h4Kdo9IF4bSw')
