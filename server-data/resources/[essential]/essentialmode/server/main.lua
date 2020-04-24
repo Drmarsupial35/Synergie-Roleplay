@@ -2,11 +2,11 @@
 --  GNU AFFERO GENERAL PUBLIC LICENSE  --
 --     Version 3, 19 November 2007     --
 
-_VERSION = '6.3.0'
+_VERSION = '6.4.0'
 _FirstCheckPerformed = false
 _UUID = LoadResourceFile(GetCurrentResourceName(), "uuid") or "unknown"
-_Prefix = '^2[EssentialMode]^0'
-_PrefixError = '^1[EssentialMode]^0'
+_Prefix = GetConvar("es_prefix", '^2[EssentialMode]^0')
+_PrefixError = GetConvar("es_errorprefix", '^1[EssentialMode]^0')
 
 -- Server
 
@@ -49,10 +49,6 @@ function performVersionCheck()
 			else
 				print(_Prefix .. " Everything is nice and updated!\n")
 			end
-
-			-- if decoded.extra then
-			-- 	print(decoded.extra)
-			-- end
 		else
 			print(_Prefix .. " Updater version: UPDATER UNAVAILABLE")
 			print(_Prefix .. " This could be your internet connection or that the update server is not running. This won't impact the server\n\n")
@@ -359,8 +355,12 @@ end)
 
 RegisterServerEvent('es:updatePositions')
 AddEventHandler('es:updatePositions', function(x, y, z)
-	if(Users[source])then
-		Users[source].setCoords(x, y, z)
+	if(settings.defaultSettings.sendPosition == "0")then
+		TriggerClientEvent("es:disableClientPosition", source)
+	else
+		if(Users[source])then
+			Users[source].setCoords(x, y, z)
+		end
 	end
 end)
 
