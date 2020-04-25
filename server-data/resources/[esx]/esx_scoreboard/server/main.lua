@@ -1,15 +1,14 @@
 ESX = nil
-local connectedPlayers = {}
+local connectedPlayers, maxPlayers = {}, GetConvarInt('sv_maxclients', 32)
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 ESX.RegisterServerCallback('esx_scoreboard:getConnectedPlayers', function(source, cb)
-	cb(connectedPlayers)
+	cb(connectedPlayers, maxPlayers)
 end)
 
 AddEventHandler('esx:setJob', function(playerId, job, lastJob)
 	connectedPlayers[playerId].job = job.name
-
 	TriggerClientEvent('esx_scoreboard:updateConnectedPlayers', -1, connectedPlayers)
 end)
 
@@ -19,7 +18,6 @@ end)
 
 AddEventHandler('esx:playerDropped', function(playerId)
 	connectedPlayers[playerId] = nil
-
 	TriggerClientEvent('esx_scoreboard:updateConnectedPlayers', -1, connectedPlayers)
 end)
 
@@ -32,10 +30,8 @@ end)
 
 AddEventHandler('onResourceStart', function(resource)
 	if resource == GetCurrentResourceName() then
-		Citizen.CreateThread(function()
-			Citizen.Wait(1000)
-			AddPlayersToScoreboard()
-		end)
+		Citizen.Wait(1000)
+		AddPlayersToScoreboard()
 	end
 end)
 
@@ -44,7 +40,7 @@ function AddPlayerToScoreboard(xPlayer, update)
 
 	connectedPlayers[playerId] = {}
 	connectedPlayers[playerId].ping = GetPlayerPing(playerId)
-	connectedPlayers[playerId].id = playerId
+	connectedPlayers[playerId].playerId = playerId
 	connectedPlayers[playerId].name = Sanitize(xPlayer.getName())
 	connectedPlayers[playerId].job = xPlayer.job.name
 
@@ -53,17 +49,14 @@ function AddPlayerToScoreboard(xPlayer, update)
 	end
 
 	if xPlayer.getGroup() == 'user' then
-		Citizen.CreateThread(function()
-			Citizen.Wait(3000)
-			TriggerClientEvent('esx_scoreboard:toggleID', playerId, false)
-		end)
+		TriggerClientEvent('esx_scoreboard:toggleID', playerId, false)
 	end
 end
 
 function AddPlayersToScoreboard()
 	local players = ESX.GetPlayers()
 
-	for i=1, #players, 1 do
+	for i=1, #players do
 		local xPlayer = ESX.GetPlayerFromId(players[i])
 		AddPlayerToScoreboard(xPlayer, false)
 	end
@@ -72,8 +65,14 @@ function AddPlayersToScoreboard()
 end
 
 function UpdatePing()
-	for k,v in pairs(connectedPlayers) do
-		v.ping = GetPlayerPing(k)
+	for playerId,v in pairs(connectedPlayers) do
+		local ping = GetPlayerPing(playerId)
+
+		if ping and ping > 0 then
+			v.ping = ping
+		else
+			v.ping = 'missing'
+		end
 	end
 
 	TriggerClientEvent('esx_scoreboard:updatePing', -1, connectedPlayers)

@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'ESX Scoreboard'
 
-version '1.0.0'
+version '1.1.0'
 
 server_script 'server/main.lua'
 
@@ -14,6 +14,6 @@ ui_page 'html/scoreboard.html'
 
 files {
 	'html/scoreboard.html',
-	'html/style.css',
-	'html/listener.js'
+	'html/script.js',
+	'html/style.css'
 }

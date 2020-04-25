@@ -1,4 +1,4 @@
-local idVisable = true
+local showPlayerId, isScoreboardActive = true, false
 ESX = nil
 
 Citizen.CreateThread(function()
@@ -8,20 +8,16 @@ Citizen.CreateThread(function()
 	end
 
 	Citizen.Wait(2000)
-	ESX.TriggerServerCallback('esx_scoreboard:getConnectedPlayers', function(connectedPlayers)
+	ESX.TriggerServerCallback('esx_scoreboard:getConnectedPlayers', function(connectedPlayers, maxPlayers)
 		UpdatePlayerTable(connectedPlayers)
+
+		SendNUIMessage({
+			action = 'updateServerInfo',
+			maxPlayers = maxPlayers,
+			uptime = 'unknown',
+			playTime = '00h 00m'
+		})
 	end)
-end)
-
-Citizen.CreateThread(function()
-	Citizen.Wait(500)
-	SendNUIMessage({
-		action = 'updateServerInfo',
-
-		maxPlayers = GetConvarInt('sv_maxclients', 32),
-		uptime = 'unknown',
-		playTime = '00h 00m'
-	})
 end)
 
 RegisterNetEvent('esx_scoreboard:updateConnectedPlayers')
@@ -29,50 +25,38 @@ AddEventHandler('esx_scoreboard:updateConnectedPlayers', function(connectedPlaye
 	UpdatePlayerTable(connectedPlayers)
 end)
 
+RegisterNetEvent('esx_scoreboard:updatePlayersInQueue')
+AddEventHandler('esx_scoreboard:updatePlayersInQueue', function(playersInQueue)
+	SendNUIMessage({action = 'updateServerInfo', playersInQueue = playersInQueue})
+end)
+
 RegisterNetEvent('esx_scoreboard:updatePing')
 AddEventHandler('esx_scoreboard:updatePing', function(connectedPlayers)
-	SendNUIMessage({
-		action  = 'updatePing',
-		players = connectedPlayers
-	})
+	SendNUIMessage({action = 'updatePing', players = connectedPlayers})
 end)
 
 RegisterNetEvent('esx_scoreboard:toggleID')
 AddEventHandler('esx_scoreboard:toggleID', function(state)
 	if state then
-		idVisable = state
+		showPlayerId = state
 	else
-		idVisable = not idVisable
+		showPlayerId = not showPlayerId
 	end
 
-	SendNUIMessage({
-		action = 'toggleID',
-		state = idVisable
-	})
+	SendNUIMessage({action = 'toggleID', state = showPlayerId})
 end)
 
 RegisterNetEvent('uptime:tick')
 AddEventHandler('uptime:tick', function(uptime)
-	SendNUIMessage({
-		action = 'updateServerInfo',
-		uptime = uptime
-	})
+	SendNUIMessage({action = 'updateServerInfo', uptime = uptime})
 end)
 
 function UpdatePlayerTable(connectedPlayers)
-	local formattedPlayerList, num = {}, 1
+	local formattedPlayerList = {}
 	local ems, police, taxi, mechanic, cardealer, estate, players = 0, 0, 0, 0, 0, 0, 0
 
 	for k,v in pairs(connectedPlayers) do
-
-		if num == 1 then
-			table.insert(formattedPlayerList, ('<tr><td>%s</td><td>%s</td><td>%s</td>'):format(v.name, v.id, v.ping))
-			num = 2
-		elseif num == 2 then
-			table.insert(formattedPlayerList, ('<td>%s</td><td>%s</td><td>%s</td></tr>'):format(v.name, v.id, v.ping))
-			num = 1
-		end
-
+		table.insert(formattedPlayerList, ('<tr><td>%s</td><td>%s</td><td>%s</td></tr>'):format(v.name, v.playerId, v.ping))
 		players = players + 1
 
 		if v.job == 'ambulance' then
@@ -90,60 +74,43 @@ function UpdatePlayerTable(connectedPlayers)
 		end
 	end
 
-	if num == 1 then
-		table.insert(formattedPlayerList, '</tr>')
-	end
-
-	SendNUIMessage({
-		action  = 'updatePlayerList',
-		players = table.concat(formattedPlayerList)
-	})
+	SendNUIMessage({action = 'updatePlayerList', players = table.concat(formattedPlayerList)})
 
 	SendNUIMessage({
 		action = 'updatePlayerJobs',
-		jobs   = {ems = ems, police = police, taxi = taxi, mechanic = mechanic, cardealer = cardealer, estate = estate, player_count = players}
+		jobs = {ems = ems, police = police, taxi = taxi, mechanic = mechanic, cardealer = cardealer, estate = estate, player_count = players}
 	})
 end
+
+AddEventHandler('onResourceStop', function(resource)
+	if resource == GetCurrentResourceName() and isScoreboardActive then
+		SetNuiFocus(false)
+	end
+end)
 
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 
 		if IsControlJustReleased(0, 83) and IsInputDisabled(0) then
-			ToggleScoreBoard()
-			Citizen.Wait(200)
-
-		-- D-pad up on controllers works, too!
-		elseif IsControlJustReleased(0, 172) and not IsInputDisabled(0) then
-			ToggleScoreBoard()
-			Citizen.Wait(200)
+			isScoreboardActive = true
+			SetNuiFocus(true, true)
+			SendNUIMessage({action = 'enable'})
+			Citizen.Wait(1000)
 		end
 	end
 end)
 
--- Close scoreboard when game is paused
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(300)
-
-		if IsPauseMenuActive() and not IsPaused then
-			IsPaused = true
-			SendNUIMessage({action  = 'close'})
-		elseif not IsPauseMenuActive() and IsPaused then
-			IsPaused = false
-		end
-	end
+RegisterNUICallback('onCloseMenu', function()
+	isScoreboardActive = false
+	SetNuiFocus(false)
 end)
-
-function ToggleScoreBoard()
-	SendNUIMessage({action = 'toggle'})
-end
 
 Citizen.CreateThread(function()
 	local playMinute, playHour = 0, 0
 
 	while true do
-		Citizen.Wait(1000 * 60) -- every minute
+		Citizen.Wait(60000)
 		playMinute = playMinute + 1
 
 		if playMinute == 60 then
