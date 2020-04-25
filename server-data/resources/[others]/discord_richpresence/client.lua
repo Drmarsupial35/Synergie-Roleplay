@@ -4,13 +4,13 @@ Citizen.CreateThread(function()
   SetDiscordAppId(662056648680144896)
 
   -- Ici, vous devrez mettre le nom de l'image pour l'icône "Large".
-  SetDiscordRichPresenceAsset('logo_synergie')
+  SetDiscordRichPresenceAsset('logo-synergie')
 
   -- Ici, vous pouvez ajouter un texte de survol pour l'icône "Large".
   SetDiscordRichPresenceAssetText('Synergie RolePlay')
 
   -- Ici, vous devrez mettre le nom de l'image pour l'icône "small".
-  SetDiscordRichPresenceAssetSmall('logo_synergie')
+  SetDiscordRichPresenceAssetSmall('logo-synergie')
 
   -- Ici, vous pouvez ajouter un texte de survol pour l'icône "small".
   SetDiscordRichPresenceAssetSmallText('Synergie RolePlay')
