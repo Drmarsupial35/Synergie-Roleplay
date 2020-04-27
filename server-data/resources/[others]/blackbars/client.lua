@@ -11,7 +11,7 @@ end)
 Citizen.CreateThread(function()
     while true do
         while not blackBars do
-            if IsControlJustPressed(0, 74) then
+            if IsControlJustPressed(0, 246) then
                 blackBars = true
             end
             Citizen.Wait(5)
@@ -24,7 +24,7 @@ Citizen.CreateThread(function()
             TriggerEvent('esx_status:setDisplay', 0.0)
             DrawRect(1.0, 1.0, 2.0, 0.25, 0, 0, 0, 255)
             DrawRect(1.0, 0.0, 2.0, 0.25, 0, 0, 0, 255)
-            if IsControlJustPressed(0, 74) then
+            if IsControlJustPressed(0, 246) then
                 blackBars = false
                 DisplayRadar(true)
                 ESX.UI.HUD.SetDisplay(1.0)

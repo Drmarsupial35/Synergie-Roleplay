@@ -7,7 +7,6 @@
 		"citizen:server:instance",
 		"citizen:server:net",
 		"scripting",
-		"vendor:eastl",
 		"vendor:protobuf_lite",
 		"vendor:mbedtls"
 	],
