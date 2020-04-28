@@ -1,4 +1,4 @@
-# Synergie-Roleplay
+# Synergie Roleplay
 
 <p align="center">
   <img src="Discord/ressources/img/logo.png" alt="Synergie"/>
