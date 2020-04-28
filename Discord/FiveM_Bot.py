@@ -120,101 +120,100 @@ async def on_message(message):
     logs_channel = client.get_channel(702538641343250452)
 
     # Vérifie que le message envoyé n'a pas été envoyé par le Bot lui-même
-    if not (author == client.user):
-        if type(author) == 'discord.member.Member':
-            #Système de logs
-            date = datetime.today()
-            day = str(date.day)
-            month = str(date.month)
-            hour = str(date.hour)
-            minute = str(date.minute)
+    if not (author.bot):
+        #Système de logs
+        date = datetime.today()
+        day = str(date.day)
+        month = str(date.month)
+        hour = str(date.hour)
+        minute = str(date.minute)
 
-            if len(day) == 1:
-                day = "0" + day
-            if len(month) == 1:
-                month = "0" + month
-            if len(hour) == 1:
-                hour = "0" + hour
-            if len(minute) == 1:
-                minute = "0" + minute
+        if len(day) == 1:
+            day = "0" + day
+        if len(month) == 1:
+            month = "0" + month
+        if len(hour) == 1:
+            hour = "0" + hour
+        if len(minute) == 1:
+            minute = "0" + minute
 
-            date = day + "/" + month + " " + hour + "h" + minute
-            c = "**" + author.nick + "** (*" + author.name + "*) - **" + channel.name + "** (*" + date + "*)\n" + clean_content
-            await logs_channel.send(content = c)
+        date = day + "/" + month + " " + hour + "h" + minute
+        c = "**" + author.nick + "** (*" + author.name + "*) - **" + channel.name + "** (*" + date + "*)\n" + clean_content
+        await logs_channel.send(content = c)
 
-            if content.startswith('.create_embed'):
-                if staff_role in author.roles:
-                    args = content.split("\"")
-                    for m in args:
-                        if m == '' or m == ' ':
-                            args.remove(m)
-                        else:
-                            m.strip()
-                    if len(args) < 4:
-                        await channel.send(author.mention + ' Cette commande demande 3 arguments (Le titre et la description du message, ainsi que la couleur de celui-ci)')
+        if content.startswith('.create_embed'):
+            if staff_role in author.roles:
+                args = content.split("\"")
+                for m in args:
+                    if m == '' or m == ' ':
+                        args.remove(m)
                     else:
-                        title = args[1]
-                        desc  = args[2]
-                        color = int(args[3])
-                        embed = discord.Embed(title=title, description=desc, color=color)
-                        await channel.send(content='', embed=embed)
+                        m.strip()
+                if len(args) < 4:
+                    await channel.send(author.mention + ' Cette commande demande 3 arguments (Le titre et la description du message, ainsi que la couleur de celui-ci)')
                 else:
-                    await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
-                await message.delete()
+                    title = args[1]
+                    desc  = args[2]
+                    color = int(args[3])
+                    embed = discord.Embed(title=title, description=desc, color=color)
+                    await channel.send(content='', embed=embed)
+            else:
+                await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+            await message.delete()
 
-            elif message.content.startswith('.add_react'):
-                if staff_role in author.roles:
-                    args = content.split()
-                    if len(args) < 3:
-                        await channel.send(author.mention + ' Cette commande demande 2 argument (L\'ID du message et l\'emoji à ajouter)')
+        elif message.content.startswith('.add_react'):
+            if staff_role in author.roles:
+                args = content.split()
+                if len(args) < 3:
+                    await channel.send(author.mention + ' Cette commande demande 2 argument (L\'ID du message et l\'emoji à ajouter)')
+                else:
+                    msg_id = int(args[1])
+                    emoji  = args[2]
+
+                    messages = await channel.history(limit=123).flatten()
+                    trouve = False
+                    for m in messages:
+                        if msg_id == m.id:
+                            trouve = True
+                            break
+                    if trouve:
+                        await m.add_reaction(emoji)
                     else:
-                        msg_id = int(args[1])
-                        emoji  = args[2]
+                        await channel.send(author.mention + " Aucun message n'a été trouvé avec cet ID !")
+            else:
+                await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+            await message.delete()
 
-                        messages = await channel.history(limit=123).flatten()
-                        trouve = False
-                        for m in messages:
-                            if msg_id == m.id:
-                                trouve = True
-                                break
-                        if trouve:
-                            await m.add_reaction(emoji)
-                        else:
-                            await channel.send(author.mention + " Aucun message n'a été trouvé avec cet ID !")
-                else:
-                    await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
-                await message.delete()
+        elif message.content.startswith('.help'):
+            if staff_role in author.roles:
+                embed = discord.Embed(title='Liste des commandes disponibles :', description='', color=0x006f00)
+                embed.add_field(name=".create_embed <Titre> <Description> <Couleur>", value="Permet de créer un message comme celui-ci", inline=False)
+                embed.add_field(name=".add_react <ID> <Emoji>", value="Permet d'ajouter une réaction à un message", inline=False)
+                embed.add_field(name=".open_reu", value="Permet d'ouvrir le salon des réunions", inline=False)
+                embed.add_field(name=".close_reu", value="Permet de fermer le salon des réunions", inline=False)
+                embed.add_field(name=".help", value="Permet d'afficher la liste des commandes", inline=False)
+                await channel.send(content = author.mention, embed= embed)
+            else:
+                await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+            await message.delete()
 
-            elif message.content.startswith('.help'):
-                if staff_role in author.roles:
-                    embed = discord.Embed(title='Liste des commandes disponibles :', description='', color=0x006f00)
-                    embed.add_field(name=".create_embed <Titre> <Description> <Couleur>", value="Permet de créer un message comme celui-ci", inline=False)
-                    embed.add_field(name=".add_react <ID> <Emoji>", value="Permet d'ajouter une réaction à un message", inline=False)
-                    embed.add_field(name=".open_reu", value="Permet d'ouvrir le salon des réunions", inline=False)
-                    embed.add_field(name=".close_reu", value="Permet de fermer le salon des réunions", inline=False)
-                    embed.add_field(name=".help", value="Permet d'afficher la liste des commandes", inline=False)
-                    await channel.send(content = author.mention, embed= embed)
-                else:
-                    await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
-                await message.delete()
+        elif message.content.startswith('.open_reu'):
+            if staff_role in author.roles:
+                reu_channel = client.get_channel(661644667749793794)
+                citoyen = guild.get_role(661386494254120971)
+                await reu_channel.set_permissions(citoyen, read_messages=True)
+            else:
+                await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+            await message.delete()
 
-            elif message.content.startswith('.open_reu'):
-                if staff_role in author.roles:
-                    reu_channel = client.get_channel(661644667749793794)
-                    citoyen = guild.get_role(661386494254120971)
-                    await reu_channel.set_permissions(citoyen, read_messages=True)
-                else:
-                    await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
-                await message.delete()
-
-            elif message.content.startswith('.close_reu'):
-                if staff_role in author.roles:
-                    reu_channel = client.get_channel(661644667749793794)
-                    citoyen = guild.get_role(661386494254120971)
-                    await reu_channel.set_permissions(citoyen, read_messages=False)
-                else:
-                    await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
-                await message.delete()
+        elif message.content.startswith('.close_reu'):
+            if staff_role in author.roles:
+                reu_channel = client.get_channel(661644667749793794)
+                citoyen = guild.get_role(661386494254120971)
+                await reu_channel.set_permissions(citoyen, read_messages=False)
+            else:
+                await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
+            await message.delete()
 
 @client.event
 async def on_member_update(before, after):
