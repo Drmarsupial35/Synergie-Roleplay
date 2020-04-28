@@ -193,7 +193,9 @@ Config.AuthorizedVehicles = {
 		{ model = 'police4', label = 'Cruiser banalisée', 	  price = 25000 },
 		{ model = 'fbi', 	 label = 'Buffalo banalisée', 	  price = 27500 },
 		{ model = 'fbi2', 	 label = 'Granger banalisé', 	  price = 30000 },
-		{ model = 'riot',    label = 'Camion blindé', 	      price = 50000 }
+		{ model = 'expl',    label = 'Explorer banalisé', 	  price = 45000 },
+		{ model = 'riot',    label = 'Camion blindé', 	      price = 50000 },
+		{ model = 'pol718',  label = 'Porsche 718 Cayman S',  price = 60000 }
 	}
 }
 
