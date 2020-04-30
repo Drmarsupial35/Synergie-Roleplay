@@ -3,6 +3,7 @@ import random
 import string
 import datetime
 from datetime import datetime
+import numpy as np
 
 client = discord.Client()
 
@@ -224,59 +225,60 @@ async def on_message(message):
 
 @client.event
 async def on_member_update(before, after):
-    guild = client.get_guild(661382511976513556)
-    # Liste des roles du serveur
-    fonda     = guild.get_role(661384140532350987)
-    admin     = guild.get_role(661384188234039327)
-    modo      = guild.get_role(661384249588318249)
-    helpeur   = guild.get_role(661384540769615872)
-    dev       = guild.get_role(661385940857520158)
-    graphiste = guild.get_role(663390299233714176)
-    staff     = guild.get_role(661540428704645121)
-    staff_roles  = [fonda, admin, modo, helpeur, dev, graphiste, staff]
+    if not np.array_equal(before.roles, after.roles):
+        guild = client.get_guild(661382511976513556)
+        # Liste des roles du serveur
+        fonda     = guild.get_role(661384140532350987)
+        admin     = guild.get_role(661384188234039327)
+        modo      = guild.get_role(661384249588318249)
+        helpeur   = guild.get_role(661384540769615872)
+        dev       = guild.get_role(661385940857520158)
+        graphiste = guild.get_role(663390299233714176)
+        staff     = guild.get_role(661540428704645121)
+        staff_roles  = [fonda, admin, modo, helpeur, dev, graphiste, staff]
 
-    lspd    = guild.get_role(661385616067657791)
-    lsms    = guild.get_role(661385656445960203)
-    taxi    = guild.get_role(661386164061863982)
-    meca    = guild.get_role(661386331271987220)
-    bank    = guild.get_role(661387083071356959)
-    immo    = guild.get_role(661633648956669952)
-    avocat  = guild.get_role(661387112490205214)
-    juge    = guild.get_role(661387144207532078)
-    barman  = guild.get_role(661387164403236884)
-    journa  = guild.get_role(661387726821523517)
-    brinks  = guild.get_role(661387778667315221)
-    citoyen = guild.get_role(661386494254120971)
-    normal_roles = [lspd, lsms, taxi, meca, bank, immo, avocat, juge, barman, journa, brinks, citoyen]
+        lspd    = guild.get_role(661385616067657791)
+        lsms    = guild.get_role(661385656445960203)
+        taxi    = guild.get_role(661386164061863982)
+        meca    = guild.get_role(661386331271987220)
+        bank    = guild.get_role(661387083071356959)
+        immo    = guild.get_role(661633648956669952)
+        avocat  = guild.get_role(661387112490205214)
+        juge    = guild.get_role(661387144207532078)
+        barman  = guild.get_role(661387164403236884)
+        journa  = guild.get_role(661387726821523517)
+        brinks  = guild.get_role(661387778667315221)
+        citoyen = guild.get_role(661386494254120971)
+        normal_roles = [lspd, lsms, taxi, meca, bank, immo, avocat, juge, barman, journa, brinks, citoyen]
 
-    families = guild.get_role(661386399332696084)
-    ballas   = guild.get_role(661386507310858250)
-    vagos    = guild.get_role(661631856944480262)
-    mafia    = guild.get_role(661386728862515210)
-    gang_roles   = [families, ballas, vagos, mafia]
+        families = guild.get_role(661386399332696084)
+        ballas   = guild.get_role(661386507310858250)
+        vagos    = guild.get_role(661631856944480262)
+        mafia    = guild.get_role(661386728862515210)
+        gang_roles   = [families, ballas, vagos, mafia]
 
-    booster   = guild.get_role(661623425500053521)
-    donateur  = guild.get_role(662083950260387840)
-    streamer  = guild.get_role(668224754481889282)
-    paperless = guild.get_role(664210809940869157)
-    other_roles  = [booster, donateur, streamer, paperless]
+        booster   = guild.get_role(661623425500053521)
+        donateur  = guild.get_role(662083950260387840)
+        streamer  = guild.get_role(668224754481889282)
+        paperless = guild.get_role(664210809940869157)
+        other_roles  = [booster, donateur, streamer, paperless]
 
-    bar1 = guild.get_role(661385479211581510)
-    bar2 = guild.get_role(661386638726922259)
-    bar3 = guild.get_role(661643219695697933)
+        bar1 = guild.get_role(661385479211581510)
+        bar2 = guild.get_role(661386638726922259)
+        bar3 = guild.get_role(661643219695697933)
 
-    if common_data(staff_roles, after.roles) and common_data(normal_roles, after.roles):
-        await after.add_roles(bar1)
-    else:
-        await after.remove_roles(bar1)
-    if common_data(normal_roles, after.roles) and common_data(gang_roles, after.roles):
-        await after.add_roles(bar2)
-    else:
-        await after.remove_roles(bar2)
-    if common_data(normal_roles, after.roles) and common_data(other_roles, after.roles):
-        await after.add_roles(bar3)
-    else:
-        await after.remove_roles(bar3)
+        if common_data(staff_roles, after.roles) and common_data(normal_roles, after.roles):
+            await after.add_roles(bar1)
+        else:
+            await after.remove_roles(bar1)
+        if common_data(normal_roles, after.roles) and common_data(gang_roles, after.roles):
+            await after.add_roles(bar2)
+        else:
+            await after.remove_roles(bar2)
+        if common_data(normal_roles, after.roles) and common_data(other_roles, after.roles):
+            await after.add_roles(bar3)
+        else:
+            await after.remove_roles(bar3)
 
 def common_data(list1, list2):
     result = False
