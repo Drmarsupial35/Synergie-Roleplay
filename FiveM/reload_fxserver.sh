@@ -1,17 +1,14 @@
 #!/bin/bash
 echo "***********************************************************"
-echo `date '+%d-%B-%Y_%H:%M:%S'`" - Arrêt du serveur..."
-kill -9 `ps -ef | grep "/home/fivem/Synergie-Roleplay/FiveM" | grep -v grep | awk '{print $2}'`
-sleep 2
-echo `date '+%d-%B-%Y_%H:%M:%S'`" - Redémarrage de mysql..."
-sudo service mysql restart
-sleep 10
-echo `date '+%d-%B-%Y_%H:%M:%S'`" - Nettoyage du cache..."
-rm -R /home/fivem/Synergie-Roleplay/FiveM/server-data/cache/
-sleep 2
-echo `date '+%d-%B-%Y_%H:%M:%S'`" - Démarrage du serveur..."
-screen -x Live-Server -X stuff 'cd /home/fivem/Synergie-Roleplay/FiveM/server-data/
-../run.sh +exec server.cfg
-'
-sleep 10
-echo `date '+%d-%B-%Y_%H:%M:%S'`" - Fin de la procédure"
+echo `date '+%d-%B-%Y_%H:%M:%S'` " - Starting procedure..."
+sleep 1
+echo `date '+%d-%B-%Y_%H:%M:%S'` " - killing screen game server..."
+screen -X -S "Live-Server" kill
+sleep 1
+echo `date '+%d-%B-%Y_%H:%M:%S'` " - Emptying cache..."
+rm -R /home/fivem/Synergie-Roleplay/FiveM/server-data/cache
+sleep 5
+echo `date '+%d-%B-%Y_%H:%M:%S'` " - Starting server..."
+screen -S "Live-Server" -L ServerLog/`date '+%Y-%m-%d_%H:%M:%S'.txt` -d -m bash /home/fivem/Synergie-Roleplay/FiveM/runServer.sh
+sleep 15
+echo `date '+%d-%B-%Y_%H:%M:%S'` " - End procedure"
