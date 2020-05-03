@@ -1,4 +1,4 @@
-@font-face 
+@font-face
 {
     font-family: gravity;
     src: url(../fonts/gravity.otf);
@@ -37,7 +37,7 @@ body
     transform: translate(-50%, -50%);
     z-index: -1;
     opacity: 0.3;
-    transition: opacity 1s; 
+    transition: opacity 1s;
 }
 #background2 {
     opacity:0;
@@ -53,7 +53,7 @@ body
     transform: translate(-50%, -50%);
     z-index: -1;
     opacity:0;
-    transition: opacity 1s; 
+    transition: opacity 1s;
 }
 .slideright {
     animation-name: slideright;
@@ -62,18 +62,18 @@ body
 
 .zoomin
 {
-    
+
     animation-name: zoomin;
     animation-duration: 4.2s;
     justify-content: center;
-    
+
 
 }
 
 *
 {
     font-family: gravity;
-    color: rgb(230,230,230);  
+    color: rgb(230,230,230);
 
     animation-name: hammer;
     animation-duration: 10s;
@@ -104,7 +104,7 @@ progress
     margin-top: 5px;
 }
 
-progress[value] 
+progress[value]
 {
    -webkit-appearance: none;
    appearance: none;
@@ -131,7 +131,7 @@ progress::-webkit-progress-value
 
 .pbCollapse
 {
-    width: 24.63% !important
+    width: 24% !important
 
 }
 
@@ -143,7 +143,7 @@ progress::-webkit-progress-value
     float:right;
 }
 
-.hide 
+.hide
 {
     display: none;
 }
@@ -156,10 +156,10 @@ progress::-webkit-progress-value
 /*
     Messages styling + fade in and fadeout animations
 */
-#message 
+#message
 {
     opacity:1;
-    transition: opacity 0.3s; 
+    transition: opacity 0.3s;
 }
 
 /*
@@ -203,7 +203,7 @@ progress::-webkit-progress-value
     margin-left: 10px
 }
 
-#volumeSlider::-webkit-slider-thumb 
+#volumeSlider::-webkit-slider-thumb
 {
     -webkit-appearance: none;
     width: 10px;
