@@ -124,11 +124,3 @@ Citizen.CreateThread(function()
 		})
 	end
 end)
-
-RegisterCommand('screfresh', 'admin', function(xPlayer, args, showError)
-	AddPlayersToScoreboard()
-end, false, {help = 'Refresh esx_scoreboard names!'})
-
-RegisterCommand('sctoggle', 'admin', function(xPlayer, args, showError)
-	xPlayer.triggerEvent('esx_scoreboard:toggleID')
-end, false, {help = 'Toggle ID column on the scoreboard!'})
