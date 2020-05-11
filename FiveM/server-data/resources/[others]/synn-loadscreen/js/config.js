@@ -100,7 +100,7 @@ var config =
     music:
     [
         "VtguFyOdj2g","m22k4h8jOf0","lrG7FEc3bS8",
-        "awnJsu7owGA","PJIKigzBNw0","F1Vx-9TUyzA",
+        "PJIKigzBNw0","F1Vx-9TUyzA",
         "7P_qvg3wL5o","0hEYvdMoF2g","jqE8M2ZnFL8",
         "SNE2oCZH_4k","nw7DLUMwof8","BE-1aUji4XY",
         "N3zf9q8mbWs"
