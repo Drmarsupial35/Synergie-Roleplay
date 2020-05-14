@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="essentialmode" uuid="950787d3-df44-4aa5-b24d-fadeb1d0bd8f">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\drmar\Documents\Perso\Développement\Synergie-Roleplay\FiveM\server-data\essentialmode.db</jdbc-url>
+    </data-source>
+  </component>
+</project>
