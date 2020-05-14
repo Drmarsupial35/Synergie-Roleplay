@@ -32,7 +32,7 @@ files {
 	'html/img/icetea.png',
 	'html/img/lighter.png',
 	'html/img/milk.png',
-	'html/img/phone.png',
+	'html/img/tel.png',
 	'html/img/sandwich.png',
 	'html/img/sim.png',
 	'html/img/tequila.png',
