@@ -822,7 +822,7 @@ end)
 function CreateBlip()
 	if PlayerData.job ~= nill and PlayerData.job.name == 'garbage' then
 		if BlipGarbage == nil then
-			local BlipGarbage = AddBlipForCoord(Config.Cloakroom.CloakRoom.Pos.x, Config.Cloakroom.CloakRoom.Pos.y, Config.Cloakroom.CloakRoom.Pos.z)
+			BlipGarbage = AddBlipForCoord(Config.Cloakroom.CloakRoom.Pos.x, Config.Cloakroom.CloakRoom.Pos.y, Config.Cloakroom.CloakRoom.Pos.z)
 
 			SetBlipSprite (BlipGarbage, 318)
 			SetBlipDisplay(BlipGarbage, 4)
