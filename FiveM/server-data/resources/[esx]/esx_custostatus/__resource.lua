@@ -29,6 +29,7 @@ files {
 	'html/img/jobs/cardealer.png',
 	'html/img/jobs/detective.png',
 	'html/img/jobs/ambulance.png',
+	'html/img/jobs/gardener.png',
 	'html/img/jobs/tailor.png',
 	'html/img/jobs/fisherman.png',
 	'html/img/jobs/garbage.png',
