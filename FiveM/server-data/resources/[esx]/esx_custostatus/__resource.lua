@@ -38,6 +38,7 @@ files {
 	'html/img/jobs/miner.png',
 	'html/img/jobs/pizza.png',
 	'html/img/jobs/police.png',
+	'html/img/jobs/poolcleaner.png',
 	'html/img/jobs/realestateagent.png',
 	'html/img/jobs/banksecurity.png',
 	'html/img/jobs/sheriff.png',
