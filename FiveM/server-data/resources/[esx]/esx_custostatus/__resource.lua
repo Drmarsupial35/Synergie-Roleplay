@@ -24,6 +24,7 @@ files {
 	'html/img/wallet.png',
 	-- Job Images
 	'html/img/jobs/banker.png',
+	'html/img/jobs/busdriver.png',
 	'html/img/jobs/unicorn.png',
 	'html/img/jobs/bus.png',
 	'html/img/jobs/cardealer.png',
