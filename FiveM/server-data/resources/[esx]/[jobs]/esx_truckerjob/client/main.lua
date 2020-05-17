@@ -201,7 +201,7 @@ AddEventHandler('esx_truckerjob:hasEnteredMarker', function(zone)
 		if isInService and MissionLivraison and IsJobTrucker() then
 			if IsPedSittingInAnyVehicle(playerPed) and IsATruck() then
 				VerifPlaqueVehiculeActuel()
-			
+
 				if plaquevehicule == plaquevehiculeactuel then
                     CurrentAction     = 'retourcamionannulermission'
                     CurrentActionMsg  = _U('cancel_mission')
