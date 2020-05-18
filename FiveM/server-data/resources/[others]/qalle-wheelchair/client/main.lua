@@ -31,7 +31,7 @@ Citizen.CreateThread(function()
 			local pickupCoords = (wheelChairCoords + wheelChairForward * 0.3)
 
 			if GetDistanceBetweenCoords(pedCoords, sitCoords, true) <= 1.0 then
-				DrawText3Ds(sitCoords, "[E] Sit", 0.4)
+				DrawText3Ds(sitCoords, "[E] S'asseoir", 0.4)
 
 				if IsControlJustPressed(0, 38) then
 					Sit(closestObject)
@@ -39,7 +39,7 @@ Citizen.CreateThread(function()
 			end
 
 			if GetDistanceBetweenCoords(pedCoords, pickupCoords, true) <= 1.0 then
-				DrawText3Ds(pickupCoords, "[E] Pick up", 0.4)
+				DrawText3Ds(pickupCoords, "[E] Pousser", 0.4)
 
 				if IsControlJustPressed(0, 38) then
 					PickUp(closestObject)
