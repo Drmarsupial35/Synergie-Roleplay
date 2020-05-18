@@ -20,12 +20,12 @@ INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_
 ;
 
 INSERT INTO `jobs` (name, label) VALUES
-	('ambulance','Ambulance')
+	('ambulance','LSMS')
 ;
 
-INSERT INTO `items` (name, label, weight) VALUES
-	('bandage','Bandage', 2),
-	('medikit','Medikit', 2)
+INSERT INTO `items` (name, label) VALUES
+	('bandage','Bandage'),
+	('medikit','Medikit')
 ;
 
 ALTER TABLE `users`

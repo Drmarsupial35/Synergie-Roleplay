@@ -93,7 +93,7 @@ function setProximity(value){
 		color = "#FFEB3B";
 		speaker = 1;
 	}else if (value == "normal"){
-		color = "#039BE5"
+		color = "#FB8C00"
 		speaker = 2;
 	}else if (value == "shout"){
 		color = "#e53935"
