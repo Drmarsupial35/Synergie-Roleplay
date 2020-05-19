@@ -44,7 +44,11 @@
     "Stormtrooper": "back003.jpg",
     "Assassin's Creed": "back004.jpg",
     "Overwatch": "back005.jpg",
-    "Kill Bill": "back006.jpg"
+    "Kill Bill": "back006.jpg",
+    "Portal": "back007.jpg",
+    "Skyrim": "back008.jpg",
+    "Joker": "back009.jpg",
+    "Wall-e": "back010.jpg"
   },
   "background_default": {
     "label": "Stormtrooper",
@@ -54,7 +58,9 @@
 
   "coque": {
     "Sansumg S8": "s8.png",
-    "Iphone X": "iphonex.png"
+    "Iphone X": "iphonex.png",
+    "Iphone 5s": "iphone5s.png",
+    "Huawei": "huawei.png"
   },
   "coque_default": {
     "label": "Sansumg S8",

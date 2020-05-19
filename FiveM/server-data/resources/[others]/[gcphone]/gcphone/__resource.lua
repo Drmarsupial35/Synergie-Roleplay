@@ -23,7 +23,11 @@ files {
 	'html/static/img/background/back004.jpg',
 	'html/static/img/background/back005.jpg',
 	'html/static/img/background/back006.jpg',
-	
+	'html/static/img/background/back007.jpg',
+	'html/static/img/background/back008.jpg',
+	'html/static/img/background/back009.jpg',
+	'html/static/img/background/back010.jpg',
+
 	'html/static/img/icons_app/call.png',
 	'html/static/img/icons_app/contacts.png',
 	'html/static/img/icons_app/sms.png',
