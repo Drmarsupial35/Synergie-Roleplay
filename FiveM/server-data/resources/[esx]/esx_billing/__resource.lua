@@ -1,10 +1,8 @@
-fx_version 'adamant'
-
-game 'gta5'
+resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
 
 description 'ESX Billing'
 
-version '1.2.0'
+version '1.1.0'
 
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
@@ -17,7 +15,6 @@ server_scripts {
 	'locales/es.lua',
 	'locales/sv.lua',
 	'locales/pl.lua',
-	'locales/cs.lua',
 	'config.lua',
 	'server/main.lua'
 }
@@ -32,7 +29,6 @@ client_scripts {
 	'locales/es.lua',
 	'locales/sv.lua',
 	'locales/pl.lua',
-	'locales/cs.lua',
 	'config.lua',
 	'client/main.lua'
 }
