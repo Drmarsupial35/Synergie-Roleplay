@@ -36,6 +36,18 @@ $(function(){
 			updateCarStatus(event.data.status)
 		/*}else if (event.data.action == "updateWeight"){
 			updateWeight(event.data.weight)*/
+		}else if (event.data.action == "showhud") {
+			let divs = document.getElementsByTagName("div");
+			if (event.data.key == true) {
+				for (i = 0; i < divs.length; i++) {
+					divs[i].style.display = '';
+				}
+			}
+			else {
+				for (i = 0; i < divs.length; i++) {
+					divs[i].style.display = 'none';
+				}
+			}
 		}
 	});
 

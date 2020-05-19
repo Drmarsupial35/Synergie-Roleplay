@@ -12,6 +12,7 @@ local Keys = {
 
 ESX = nil
 local isTalking = false
+local hide = false
 --local inVehicle = false
 
 Citizen.CreateThread(function()
@@ -24,6 +25,28 @@ Citizen.CreateThread(function()
 
 	-- Updates the UI on start
 	NetworkSetTalkerProximity(10.0)
+end)
+
+AddEventHandler('esx_custostatus:hideHUD', function()
+	SendNUIMessage({ action = "showhud", key = false;})
+end)
+AddEventHandler('esx_custostatus:showHUD', function()
+	SendNUIMessage({ action = "showhud", key = true;})
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		Wait(0)
+		if IsPauseMenuActive() and not hide then
+			TriggerEvent('esx_custostatus:hideHUD')
+			hide = true
+		end
+		if not IsPauseMenuActive() and hide then
+			Wait(0)
+			TriggerEvent('esx_custostatus:showHUD')
+			hide = false
+		end
+	end
 end)
 
 RegisterNetEvent('esx:playerLoaded')

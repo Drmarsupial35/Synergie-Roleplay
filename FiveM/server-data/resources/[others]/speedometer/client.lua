@@ -1,9 +1,47 @@
 local ind = {l = false, r = false}
+local hide = false
+local alreadyInCar = false
+local fuel
+
+AddEventHandler('speedometer:hideHUD', function()
+	hide = true
+	SendNUIMessage({
+		showhud = false,
+		showfuel = false
+	})
+end)
+
+AddEventHandler('speedometer:showHUD', function()
+	hide = false
+	if alreadyInCar == true then
+		SendNUIMessage({
+			showhud = true,
+			showfuel = true,
+			fuel = fuel
+		})
+	end
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		Wait(0)
+		if IsPauseMenuActive() and not hide then
+			TriggerEvent('speedometer:hideHUD')
+			hide = true
+		end
+		if not IsPauseMenuActive() and hide then
+			Wait(0)
+			TriggerEvent('speedometer:showHUD')
+			hide = false
+		end
+	end
+end)
 
 Citizen.CreateThread(function()
 	while true do
 		local Ped = GetPlayerPed(-1)
-		if(IsPedInAnyVehicle(Ped)) then
+		if(IsPedInAnyVehicle(Ped)) and hide ~= true then
+			alreadyInCar = true
 			local PedCar = GetVehiclePedIsIn(Ped, false)
 			if PedCar and GetPedInVehicleSeat(PedCar, -1) == Ped then
 
@@ -70,11 +108,13 @@ Citizen.CreateThread(function()
 				end
 
 			else
+				alreadyInCar = false
 				SendNUIMessage({
 					showhud = false
 				})
 			end
 		else
+			alreadyInCar = false
 			SendNUIMessage({
 				showhud = false
 			})
@@ -87,10 +127,10 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		local Ped = GetPlayerPed(-1)
-		if(IsPedInAnyVehicle(Ped)) then
+		if(IsPedInAnyVehicle(Ped)) and hide ~= false then
 			local PedCar = GetVehiclePedIsIn(Ped, false)
 			if PedCar and GetPedInVehicleSeat(PedCar, -1) == Ped then
-				local fuel = GetVehicleFuelLevel(PedCar)
+				fuel = GetVehicleFuelLevel(PedCar)
 				SendNUIMessage({
 					showfuel = true,
 					fuel = fuel
