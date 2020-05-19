@@ -40,8 +40,8 @@ Config.Strings = {
 }
 
 if not Config.UseESX then
-	Config.Strings.PurchaseJerryCan = "Press ~g~E ~w~to grab a Jerrycan"
-	Config.Strings.RefillJerryCan = "Press ~g~E ~w~ to refill the Jerrycan"
+	Config.Strings.PurchaseJerryCan = "Appuyez sur ~g~E ~w~ pour prend un Jerrycan"
+	Config.Strings.RefillJerryCan = "Appuyez sur ~g~E ~w~ pour remplir le Jerrycan"
 end
 
 Config.PumpModels = {
