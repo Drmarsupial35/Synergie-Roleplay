@@ -110,6 +110,7 @@ function OpenCloakroom()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'taxi_cloakroom',
 	{
+		css      = 'job',
 		title    = _U('cloakroom_menu'),
 		align    = 'top-left',
 		elements = {
@@ -157,6 +158,7 @@ function OpenVehicleSpawnerMenu()
 
 			ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_spawner',
 			{
+				css      = 'job',
 				title    = _U('spawn_veh'),
 				align    = 'top-left',
 				elements = elements
@@ -190,6 +192,7 @@ function OpenVehicleSpawnerMenu()
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_spawner',
 		{
+			css      = 'job',
 			title		= _U('spawn_veh'),
 			align		= 'top-left',
 			elements	= Config.AuthorizedVehicles
@@ -247,6 +250,7 @@ function OpenTaxiActionsMenu()
 	ESX.UI.Menu.CloseAll()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'taxi_actions', {
+		css      = 'job',
 		title    = 'Taxi',
 		align    = 'top-left',
 		elements = elements
@@ -275,6 +279,7 @@ function OpenMobileTaxiActionsMenu()
 	ESX.UI.Menu.CloseAll()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'mobile_taxi_actions', {
+		css      = 'job',
 		title    = 'Taxi',
 		align    = 'top-left',
 		elements = {
@@ -364,6 +369,7 @@ function OpenGetStocksMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'stocks_menu', {
+			css      = 'job',
 			title    = 'Taxi Stock',
 			align    = 'top-left',
 			elements = elements
@@ -413,6 +419,7 @@ function OpenPutStocksMenu()
 		end
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'stocks_menu', {
+			css      = 'job',
 			title    = _U('inventory'),
 			align    = 'top-left',
 			elements = elements

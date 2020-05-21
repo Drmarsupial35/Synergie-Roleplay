@@ -15,6 +15,7 @@ function OpenAmbulanceActionsMenu()
 	ESX.UI.Menu.CloseAll()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'ambulance_actions', {
+		css      = 'job',
 		title    = _U('ambulance'),
 		align    = 'top-left',
 		elements = elements
@@ -36,6 +37,7 @@ function OpenMobileAmbulanceActionsMenu()
 	ESX.UI.Menu.CloseAll()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'mobile_ambulance_actions', {
+		css      = 'job',
 		title    = _U('ambulance'),
 		align    = 'top-left',
 		elements = {
@@ -44,6 +46,7 @@ function OpenMobileAmbulanceActionsMenu()
 	}, function(data, menu)
 		if data.current.value == 'citizen_interaction' then
 			ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'citizen_interaction', {
+				css      = 'job',
 				title    = _U('ems_menu_title'),
 				align    = 'top-left',
 				elements = {
@@ -407,6 +410,7 @@ end)
 
 function OpenCloakroomMenu()
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'cloakroom', {
+		css      = 'job',
 		title    = _U('cloakroom'),
 		align    = 'top-left',
 		elements = {
@@ -443,6 +447,7 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 	}
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle', {
+		css      = 'job',
 		title    = _U('garage_title'),
 		align    = 'top-left',
 		elements = elements
@@ -494,6 +499,7 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 					end
 
 					ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_garage', {
+						css      = 'job',
 						title    = _U('garage_title'),
 						align    = 'top-left',
 						elements = garage
@@ -624,6 +630,7 @@ function OpenHelicopterSpawnerMenu(hospital, partNum)
 	}
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'helicopter_spawner', {
+		css      = 'job',
 		title    = _U('helicopter_title'),
 		align    = 'top-left',
 		elements = elements
@@ -676,6 +683,7 @@ function OpenHelicopterSpawnerMenu(hospital, partNum)
 					end
 
 					ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'helicopter_garage', {
+						css      = 'job',
 						title    = _U('helicopter_garage_title'),
 						align    = 'top-left',
 						elements = garage
@@ -720,12 +728,14 @@ function OpenShopMenu(elements, restoreCoords, shopCoords)
 	isInShopMenu = true
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_shop', {
+		css      = 'job',
 		title    = _U('vehicleshop_title'),
 		align    = 'top-left',
 		elements = elements
 	}, function(data, menu)
 
 		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'vehicle_shop_confirm', {
+			css      = 'job',
 			title    = _U('vehicleshop_confirm', data.current.name, data.current.price),
 			align    = 'top-left',
 			elements = {
@@ -853,6 +863,7 @@ function OpenPharmacyMenu()
 	ESX.UI.Menu.CloseAll()
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'pharmacy', {
+		css      = 'job',
 		title    = _U('pharmacy_menu_title'),
 		align    = 'top-left',
 		elements = {
