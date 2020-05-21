@@ -2,19 +2,22 @@ local wasmenuopen = false
 
 Citizen.CreateThread(function()
 	while true do
-			Wait(0)
-			if IsPauseMenuActive() and not wasmenuopen then
-					SetCurrentPedWeapon(GetPlayerPed(-1), 0xA2719263, true) -- set unarmed
-					TriggerEvent("Map:ToggleMap")
-					--TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_TOURIST_MAP", 0, false) -- Start the scenario
-					wasmenuopen = true
-			end
-			
-			if not IsPauseMenuActive() and wasmenuopen then
-					Wait(2000)
-					TriggerEvent("Map:ToggleMap")
-					wasmenuopen = false
-			end
+			Wait(1)
+            local Ped = GetPlayerPed(-1)
+            if not IsPedInAnyVehicle(Ped) then
+                if IsPauseMenuActive() and not wasmenuopen then
+                        SetCurrentPedWeapon(GetPlayerPed(-1), 0xA2719263, true) -- set unarmed
+                        TriggerEvent("Map:ToggleMap")
+                        --TaskStartScenarioInPlace(GetPlayerPed(-1), "WORLD_HUMAN_TOURIST_MAP", 0, false) -- Start the scenario
+                        wasmenuopen = true
+                end
+
+                if not IsPauseMenuActive() and wasmenuopen then
+                        Wait(2000)
+                        TriggerEvent("Map:ToggleMap")
+                        wasmenuopen = false
+                end
+            end
 	end
 end)
 
