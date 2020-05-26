@@ -56,7 +56,7 @@ Fwv = function (entity)
       velBuffer[2] = velBuffer[1]
       velBuffer[1] = GetEntityVelocity(car)
 
-      if IsControlJustReleased(0, 170) and GetLastInputMethod(0) then
+      if IsControlJustReleased(0, 289) and GetLastInputMethod(0) then
         beltOn = not beltOn
         if beltOn then
 		  TriggerEvent("pNotify:SendNotification", {text = "Centure attachée", type = "success", timeout = 1400, layout = "centerLeft"})

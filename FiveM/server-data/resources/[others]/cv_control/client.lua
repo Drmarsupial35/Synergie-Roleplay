@@ -22,7 +22,7 @@ local regulateur = 50
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        if IsControlJustPressed(1, 289) and IsPedInAnyVehicle(GetPlayerPed(-1)) then
+        if IsControlJustPressed(1, 243) and IsPedInAnyVehicle(GetPlayerPed(-1)) then
             MainMenu()
             Menu.hidden = not Menu.hidden
             menuopen = not menuopen
