@@ -2,7 +2,7 @@
 
 #config
 HOST=185.44.81.48
-PORT=44814
+PORT=40088
 
 #script
 # timeout 2 bash -c "</dev/tcp/$HOST/$PORT";
