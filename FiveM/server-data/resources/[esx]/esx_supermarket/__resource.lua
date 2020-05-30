@@ -45,6 +45,10 @@ files {
 	'html/img/drill.png',
 	'html/img/jumelles.png',
 	'html/img/mask.png',
+	'html/img/suppressor.png',
+	'html/img/grip.png',
+	'html/img/flashlight.png',
+	'html/img/yusuf.png',
 	'html/img/clip.png'
 
 }
