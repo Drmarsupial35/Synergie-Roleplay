@@ -43,6 +43,8 @@ files {
 	'html/img/fixtool.png',
 	'html/img/gazbottle.png',
 	'html/img/drill.png',
+	'html/img/jumelles.png',
+	'html/img/mask.png',
 	'html/img/clip.png'
 
 }
