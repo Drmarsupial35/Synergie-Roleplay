@@ -19,8 +19,9 @@ Citizen.CreateThread(function()
 		local lPed = GetPlayerPed(-1)
 		RequestAnimDict("rcmnigel1c")
 		if not IsPedInAnyVehicle(lPed, false) and not IsPedSwimming(lPed) and not IsPedShooting(lPed) and not IsPedClimbing(lPed) and not IsPedCuffed(lPed) and not IsPedDiving(lPed) and not IsPedFalling(lPed) and not IsPedJumping(lPed) and not IsPedJumpingOutOfVehicle(lPed) and IsPedOnFoot(lPed) and not IsPedRunning(lPed) and not IsPedUsingAnyScenario(lPed) and not IsPedInParachuteFreeFall(lPed) then
-			if IsControlPressed(1, 74) and IsControlPressed(1,19) then
-				if DoesEntityExist(lPed) then
+			if IsControlPressed(1, 74) and IsControlPressed(1,19)then
+				if DoesEntityExist(lPed) and not whistle then
+					whistle = true
 					SetCurrentPedWeapon(lPed, 0xA2719263, true)
 					Citizen.CreateThread(function()
 						RequestAnimDict("rcmnigel1c")
@@ -30,6 +31,7 @@ Citizen.CreateThread(function()
 							TaskPlayAnim(lPed, "rcmnigel1c", "hailing_whistle_waive_a", 2.7, 2.7, -1, 49, 0, 0, 0, 0)
 							Citizen.Wait(2200)
 							ClearPedSecondaryTask(lPed)
+							whistle = false
 					end)
 				end
 			end
