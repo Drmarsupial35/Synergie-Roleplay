@@ -1383,7 +1383,7 @@ function refreshBlips()
 				table.insert(blipList, {
 					coords = { v.GaragePoint.x, v.GaragePoint.y },
 					text   = _U('blip_garage'),
-					sprite = Config.BlipGarage.Sprite,
+					sprite = 524,
 					color  = Config.BlipGarage.Color,
 					scale  = Config.BlipGarage.Scale
 				})
@@ -1394,8 +1394,8 @@ function refreshBlips()
 			table.insert(blipList, {
 				coords = { v.PoundPoint.x, v.PoundPoint.y },
 				text   = _U('blip_pound'),
-				sprite = Config.BlipPound.Sprite,
-				color  = Config.BlipPound.Color,
+				sprite = 238,
+				color  = 76,
 				scale  = Config.BlipPound.Scale
 			})
 		end
@@ -1405,8 +1405,8 @@ function refreshBlips()
 		for k,v in pairs(Config.BoatGarages) do
 			table.insert(blipList, {
 				coords = { v.GaragePoint.x, v.GaragePoint.y },
-				text   = _U('blip_garage'),
-				sprite = Config.BlipGarage.Sprite,
+				text   = _U('blip_garage') .. ' | Bateau',
+				sprite = 455,
 				color  = Config.BlipGarage.Color,
 				scale  = Config.BlipGarage.Scale
 			})
@@ -1415,9 +1415,9 @@ function refreshBlips()
 		for k,v in pairs(Config.BoatPounds) do
 			table.insert(blipList, {
 				coords = { v.PoundPoint.x, v.PoundPoint.y },
-				text   = _U('blip_pound'),
-				sprite = Config.BlipPound.Sprite,
-				color  = Config.BlipPound.Color,
+				text   = _U('blip_pound') .. ' | Bateau',
+				sprite = 455,
+				color  = 76,
 				scale  = Config.BlipPound.Scale
 			})
 		end
@@ -1427,8 +1427,8 @@ function refreshBlips()
 		for k,v in pairs(Config.AircraftGarages) do
 			table.insert(blipList, {
 				coords = { v.GaragePoint.x, v.GaragePoint.y },
-				text   = _U('blip_garage'),
-				sprite = Config.BlipGarage.Sprite,
+				text   = _U('blip_garage') .. ' | Avion',
+				sprite = 307,
 				color  = Config.BlipGarage.Color,
 				scale  = Config.BlipGarage.Scale
 			})
@@ -1437,9 +1437,9 @@ function refreshBlips()
 		for k,v in pairs(Config.AircraftPounds) do
 			table.insert(blipList, {
 				coords = { v.PoundPoint.x, v.PoundPoint.y },
-				text   = _U('blip_pound'),
-				sprite = Config.BlipPound.Sprite,
-				color  = Config.BlipPound.Color,
+				text   = _U('blip_pound') .. ' | Avion',
+				sprite = 307,
+				color  = 76,
 				scale  = Config.BlipPound.Scale
 			})
 		end
@@ -1451,8 +1451,8 @@ function refreshBlips()
 				table.insert(JobBlips, {
 					coords = { v.PoundPoint.x, v.PoundPoint.y },
 					text   = _U('blip_police_pound'),
-					sprite = Config.BlipJobPound.Sprite,
-					color  = Config.BlipJobPound.Color,
+					sprite = 238,
+					color  = 75,
 					scale  = Config.BlipJobPound.Scale
 				})
 			end
@@ -1463,8 +1463,8 @@ function refreshBlips()
 				table.insert(JobBlips, {
 					coords = { v.PoundPoint.x, v.PoundPoint.y },
 					text   = _U('blip_ambulance_pound'),
-					sprite = Config.BlipJobPound.Sprite,
-					color  = Config.BlipJobPound.Color,
+					sprite = 238,
+					color  = 75,
 					scale  = Config.BlipJobPound.Scale
 				})
 			end
@@ -1475,8 +1475,8 @@ function refreshBlips()
 				table.insert(JobBlips, {
 					coords = { v.PoundPoint.x, v.PoundPoint.y },
 					text   = _U('blip_taxi_pound'),
-					sprite = Config.BlipJobPound.Sprite,
-					color  = Config.BlipJobPound.Color,
+					sprite = 238,
+					color  = 75,
 					scale  = Config.BlipJobPound.Scale
 				})
 			end
@@ -1487,8 +1487,8 @@ function refreshBlips()
 				table.insert(JobBlips, {
 					coords = { v.PoundPoint.x, v.PoundPoint.y },
 					text   = _U('blip_mechanic_pound'),
-					sprite = Config.BlipJobPound.Sprite,
-					color  = Config.BlipJobPound.Color,
+					sprite = 238,
+					color  = 75,
 					scale  = Config.BlipJobPound.Scale
 				})
 			end

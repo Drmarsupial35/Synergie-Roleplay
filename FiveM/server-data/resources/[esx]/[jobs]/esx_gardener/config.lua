@@ -6,7 +6,7 @@ Config.platePrefix = "JARD"
 Config.Locale = 'fr'
 
 Config.Blip = {
-  Sprite = 385,
+  Sprite = 496,
   Color = 5
 }
 
@@ -27,8 +27,8 @@ Config.Zones = {
     Size = {x = 1.5, y = 1.5, z = 0.6},
     Color = {r = 11, g = 203, b = 159},
     Type = 27,
-    BlipSprite = 385,
-    BlipColor = 5,
+    BlipSprite = 496,
+    BlipColor = 25,
     BlipName = Config.nameJobLabel.." : Vestiaire",
     hint = 'Appuyez sur ~INPUT_CONTEXT~ pour accéder au vestiaire',
   },
@@ -38,8 +38,8 @@ Config.Zones = {
     Size = {x = 1.5, y = 1.5, z = 0.6},
     Color = {r = 11, g = 203, b = 159},
     Type = 27,
-    BlipSprite = 385,
-    BlipColor = 5,
+    BlipSprite = 496,
+    BlipColor = 25,
     BlipName = Config.nameJobLabel.." : Véhicule",
     hint = 'Appuyez sur ~INPUT_CONTEXT~ pour accéder au garage',
   },
@@ -56,8 +56,8 @@ Config.Zones = {
     Size = {x = 3.0, y = 3.0, z = 0.9},
     Color = {r = 255, g = 0, b = 0},
     Type = 27,
-    BlipSprite = 385,
-    BlipColor = 5,
+    BlipSprite = 496,
+    BlipColor = 25,
     BlipName = Config.nameJobLabel.." : Retour Véhicule",
     hint = 'Appuyez sur ~INPUT_CONTEXT~ pour ranger le véhicule',
   },
@@ -67,8 +67,8 @@ Config.Zones = {
     Size = {x = 5.0, y = 5.0, z = 1.0},
     Color = {r = 11, g = 203, b = 159},
     Type = 27,
-    BlipSprite = 385,
-    BlipColor = 5,
+    BlipSprite = 496,
+    BlipColor = 25,
     BlipName = Config.nameJobLabel.." : Dépôt",
 
     ItemTime = 500,

@@ -571,9 +571,9 @@ function CreateBlip()
 		if BlipTrucker == nil then
 			BlipTrucker = AddBlipForCoord(Config.Cloakroom.CloakRoom.Pos.x, Config.Cloakroom.CloakRoom.Pos.y, Config.Cloakroom.CloakRoom.Pos.z)
 
-			SetBlipSprite (BlipTrucker, 67)
+			SetBlipSprite (BlipTrucker, 477)
 			SetBlipDisplay(BlipTrucker, 4)
-			SetBlipScale  (BlipTrucker, 1.2)
+			SetBlipScale  (BlipTrucker, 1.1)
 			SetBlipColour (BlipTrucker, 5)
 			SetBlipAsShortRange(BlipTrucker, true)
 

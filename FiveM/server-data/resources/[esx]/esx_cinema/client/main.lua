@@ -22,7 +22,7 @@ function LoadBlips()
 		local blip = AddBlipForCoord(v.coord)
 
 		SetBlipSprite(blip, 135)
-		SetBlipScale(blip, 1.2)
+		SetBlipScale(blip, 0.8)
 		SetBlipColour(blip, 25)
 		SetBlipAsShortRange(blip, true)
 

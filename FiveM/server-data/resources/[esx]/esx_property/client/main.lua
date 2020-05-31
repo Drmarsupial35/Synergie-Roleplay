@@ -43,9 +43,9 @@ function CreateBlips()
 
       Blips[property.name] = AddBlipForCoord(property.entering.x, property.entering.y, property.entering.z)
 
-      SetBlipSprite (Blips[property.name], 369)
+      SetBlipSprite (Blips[property.name], 350)
       SetBlipDisplay(Blips[property.name], 4)
-      SetBlipScale  (Blips[property.name], 1.0)
+      SetBlipScale  (Blips[property.name], 0.8)
       SetBlipAsShortRange(Blips[property.name], true)
 
       BeginTextCommandSetBlipName("STRING")
@@ -203,7 +203,7 @@ function SetPropertyOwned(name, owned)
 
     Blips[enteringName] = AddBlipForCoord(entering.x,  entering.y,  entering.z)
 
-    SetBlipSprite(Blips[enteringName], 357)
+    SetBlipSprite(Blips[enteringName], 475)
     SetBlipAsShortRange(Blips[enteringName], true)
 
     BeginTextCommandSetBlipName("STRING")

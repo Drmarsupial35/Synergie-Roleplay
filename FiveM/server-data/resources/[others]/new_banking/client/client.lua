@@ -166,6 +166,7 @@ Citizen.CreateThread(function()
 		local blip = AddBlipForCoord(v.x, v.y, v.z)
 		SetBlipSprite(blip, v.id)
 		SetBlipScale(blip, 0.7)
+		SetBlipColour (blip, 69)
 		SetBlipAsShortRange(blip, true)
 		if v.principal ~= nil and v.principal then
 			SetBlipColour(blip, 77)

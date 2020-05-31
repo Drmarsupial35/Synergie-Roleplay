@@ -827,7 +827,7 @@ function CreateBlip()
 			SetBlipSprite (BlipGarbage, 318)
 			SetBlipDisplay(BlipGarbage, 4)
 			SetBlipScale  (BlipGarbage, 1.2)
-			SetBlipColour (BlipGarbage, 5)
+			SetBlipColour (BlipGarbage, 56)
 			SetBlipAsShortRange(BlipGarbage, true)
 
 			BeginTextCommandSetBlipName("STRING")
