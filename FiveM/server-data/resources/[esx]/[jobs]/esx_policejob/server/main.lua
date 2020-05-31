@@ -467,8 +467,6 @@ ESX.RegisterServerCallback('esx_policejob:retrieveJobVehicles', function(source,
 		['@job'] = xPlayer.job.name
 	})
 
-	print(result)
-
 	cb(result)
 
 end)
