@@ -460,6 +460,19 @@ ESX.RegisterServerCallback('esx_policejob:buyJobVehicle', function(source, cb, v
 	end
 end)
 
+ESX.RegisterServerCallback('esx_policejob:retrieveJobVehicles', function(source, cb, vehicleProps)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local result = MySQL.Sync.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND job = @job', {
+		['@owner'] = 'society:police',
+		['@job'] = xPlayer.job.name
+	})
+
+	print(result)
+
+	cb(result)
+
+end)
+
 ESX.RegisterServerCallback('esx_policejob:storeNearbyVehicle', function(source, cb, nearbyVehicles)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local foundPlate, foundNum

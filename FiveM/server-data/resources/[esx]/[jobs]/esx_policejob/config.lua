@@ -195,7 +195,7 @@ Config.AuthorizedVehicles = {
 		{ model = 'fbi2', 	 label = 'Granger banalisé', 	  price = 30000 },
 		{ model = 'expl',    label = 'Explorer banalisé', 	  price = 45000 },
 		{ model = 'riot',    label = 'Camion blindé', 	      price = 50000 },
-		{ model = '2015polstang',  label = 'Ford Mustang GT 2015',  price = 60000 }
+		{ model = '2015polstang',  label = 'Ford Mustang GT',  price = 60000 }
 	}
 }
 

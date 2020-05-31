@@ -42,6 +42,18 @@ TriggerEvent('esx_phone:registerNumber', 'ambulance', _U('alert_ambulance'), tru
 
 TriggerEvent('esx_society:registerSociety', 'ambulance', 'Ambulance', 'society_ambulance', 'society_ambulance', 'society_ambulance', {type = 'public'})
 
+ESX.RegisterServerCallback('esx_ambulancejob:retrieveJobVehicles', function(source, cb, vehicleProps)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local result = MySQL.Sync.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND job = @job', {
+		['@owner'] = 'society:ambulance',
+		['@job'] = xPlayer.job.name
+	})
+
+	cb(result)
+
+end)
+
+
 ESX.RegisterServerCallback('esx_ambulancejob:removeItemsAfterRPDeath', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
 

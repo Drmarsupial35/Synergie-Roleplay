@@ -166,6 +166,11 @@ function ListOwnedCarsMenu()
 					local hashVehicule = v.vehicle.model
 					local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 					local vehicleName  = GetLabelText(aheadVehName)
+
+					if vehicleName == 'NULL' then
+						vehicleName = aheadVehName
+					end
+
 					local plate        = v.plate
 					local labelvehicle
 
@@ -252,6 +257,11 @@ function ListOwnedBoatsMenu()
 					local hashVehicule = v.vehicle.model
 					local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 					local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
 					local plate        = v.plate
 					local labelvehicle
 
@@ -338,6 +348,11 @@ function ListOwnedAircraftsMenu()
 					local hashVehicule = v.vehicle.model
 					local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 					local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
 					local plate        = v.plate
 					local labelvehicle
 
@@ -519,6 +534,11 @@ function ReturnOwnedCarsMenu()
 				local hashVehicule = v.model
 				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
 				local plate        = v.plate
 				local labelvehicle
 
@@ -575,6 +595,11 @@ function ReturnOwnedBoatsMenu()
 				local hashVehicule = v.model
 				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
 				local plate        = v.plate
 				local labelvehicle
 
@@ -631,6 +656,11 @@ function ReturnOwnedAircraftsMenu()
 				local hashVehicule = v.model
 				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
 				local plate        = v.plate
 				local labelvehicle
 
@@ -687,6 +717,11 @@ function ReturnOwnedPolicingMenu()
 				local hashVehicule = v.model
 				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
 				local plate        = v.plate
 				local labelvehicle
 
@@ -743,6 +778,11 @@ function ReturnOwnedAmbulanceMenu()
 				local hashVehicule = v.model
 				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
 				local plate        = v.plate
 				local labelvehicle
 
@@ -798,6 +838,11 @@ function ReturnOwnedTaxiMenu()
 				local hashVehicule = v.model
 				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
 				local plate        = v.plate
 				local labelvehicle
 
@@ -853,6 +898,11 @@ function ReturnOwnedMechanicMenu()
 				local hashVehicule = v.model
 				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
 				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
 				local plate        = v.plate
 				local labelvehicle
 

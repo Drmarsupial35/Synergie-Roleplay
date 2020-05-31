@@ -477,11 +477,16 @@ function OpenVehicleSpawnerMenu(hospital, partNum)
 		elseif data.current.action == 'garage' then
 			local garage = {}
 
-			ESX.TriggerServerCallback('esx_vehicleshop:retrieveJobVehicles', function(jobVehicles)
+			ESX.TriggerServerCallback('esx_ambulancejob:retrieveJobVehicles', function(jobVehicles)
 				if #jobVehicles > 0 then
 					for k,v in ipairs(jobVehicles) do
 						local props = json.decode(v.vehicle)
 						local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(props.model))
+
+						if vehicleName == 'NULL' then
+							vehicleName = GetDisplayNameFromVehicleModel(props.model)
+						end
+
 						local label = ('%s - <span style="color:darkgoldenrod;">%s</span>: '):format(vehicleName, props.plate)
 
 						if v.stored then
