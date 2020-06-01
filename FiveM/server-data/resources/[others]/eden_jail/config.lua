@@ -6,6 +6,6 @@ Config.MarkerType   = 27
 Config.Locale = 'fr'
 
 Config.Zones = {
-    {x = 463.8985, y = -998.0825, z = 23.95}
+    {x = 482.157, y = -1000.123, z = 23.9147}
 }
 -- by belford
