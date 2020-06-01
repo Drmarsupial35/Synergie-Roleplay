@@ -15,6 +15,8 @@ files {
 	'html/static/img/coque/iphonex.png',
 	'html/static/img/coque/base.png',
 	'html/static/img/coque/transparent.png',
+	'html/static/img/coque/huawei.png',
+	'html/static/img/coque/iphone5s.png',
 
 	-- Background
 	'html/static/img/background/back001.jpg',
