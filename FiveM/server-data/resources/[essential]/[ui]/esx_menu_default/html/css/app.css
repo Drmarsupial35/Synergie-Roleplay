@@ -98,6 +98,30 @@
   font-style: oblique;
 }
 
+.menu .head_animalerie {
+  font-family: SignPainter;
+  font-size: 59px;
+
+  background-image: url("../img/header/animalerie.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_animal {
+  font-family: SignPainter;
+  font-size: 59px;
+
+  background-image: url("../img/header/animal.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
 .menu .head_dmv {
   font-family: SignPainter;
   font-size: 59px;

@@ -55,6 +55,8 @@ files {
 	'html/img/header/valider.png',
 	'html/img/header/vehicle.png',
 	'html/img/header/appartement.png',
+	'html/img/header/animalerie.png',
+	'html/img/header/animal.png',
 	'html/img/header/vestiaire.jpg'
 
 }

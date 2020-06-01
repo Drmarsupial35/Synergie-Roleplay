@@ -49,6 +49,7 @@ files {
 	'html/img/grip.png',
 	'html/img/flashlight.png',
 	'html/img/yusuf.png',
+	'html/img/croquettes.png',
 	'html/img/clip.png'
 
 }
