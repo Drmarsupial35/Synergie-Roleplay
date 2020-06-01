@@ -4,6 +4,34 @@ Config.Locale = 'fr'
 Config.DoorList = {
 
 	--
+	-- Mechanic
+	--
+
+	-- Gate (ext)
+	{
+		objName = 'hei_prop_station_gate',
+		objYaw = 90.0,
+		objCoords  = vector3(-244.063, -1302.304, 30.30),
+		textCoords = vector3(-244.063, -1305.577, 32.60),
+		authorizedJobs = { 'mechanic', 'police' },
+		locked = false,
+		distance = 14,
+		size = 2
+	},
+
+	-- Garage door
+	{
+		objName = 'lr_prop_supermod_door_01',
+		objYaw = 0.0,
+		objCoords  = vector3(-205.682, -1310.682, 30.298),
+		textCoords = vector3(-205.682, -1310.682, 33.5),
+		authorizedJobs = { 'mechanic' },
+		locked = false,
+		distance = 7,
+		size = 2
+	},
+
+	--
 	-- Mission Row
 	-- Ground floor (0)
 	--

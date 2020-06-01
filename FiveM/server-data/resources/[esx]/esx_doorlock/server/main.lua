@@ -22,7 +22,7 @@ AddEventHandler('esx_doorlock:updateState', function(doorID, state)
 		return
 	end
 
-	if not IsAuthorized(xPlayer.job.name, Config.DoorList[doorID]) then
+	if not IsAuthorized(xPlayer.job.name, Config.DoorList[doorID]) and not IsAuthorized(xPlayer.job2.name, Config.DoorList[doorID]) then
 		print(('esx_doorlock: %s was not authorized to open a locked door!'):format(xPlayer.identifier))
 		return
 	end
