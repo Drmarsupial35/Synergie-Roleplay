@@ -4,8 +4,63 @@ Config.Locale = 'fr'
 Config.DoorList = {
 
 	--
-	-- Mission Row First Floor
+	-- Mission Row
+	-- Ground floor (0)
 	--
+
+	-- Parking Gate
+	{
+		objName = 'prop_gate_military_01',
+		objYaw = -90.0,
+		objCoords  = vector3(413.869, -1025.326, 28.314),
+		textCoords = vector3(413.839, -1029.029, 31.500),
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 14,
+		size = 2
+	},
+
+	-- To 1st floor (double door)
+	{
+		textCoords = vector3(442.923, -993.2, 31.689),
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 2.5,
+		doors = {
+			{
+				objName = 'v_ilev_ph_gendoor006',
+				objYaw = -90.0,
+				objCoords = vector3(442.923, -993.864, 30.689)
+			},
+
+			{
+				objName = 'v_ilev_ph_gendoor006',
+				objYaw = 90.0,
+				objCoords = vector3(442.923, -992.569, 30.689)
+			}
+		}
+	},
+
+	-- Entrance Doors (Police only)
+	{
+		textCoords = vector3(446.0, -999.096, 31.724),
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 2.5,
+		doors = {
+			{
+				objName = 'v_ilev_gtdoor',
+				objYaw = 45,
+				objCoords = vector3(445.220, -998.988, 30.724)
+			},
+
+			{
+				objName = 'v_ilev_gtdoor',
+				objYaw = -180.0,
+				objCoords = vector3(446.517, -998.988, 30.724)
+			}
+		}
+	},
 
 	-- Entrance Doors
 	{
@@ -100,8 +155,136 @@ Config.DoorList = {
 	},
 
 	--
-	-- Mission Row Cells
+	-- Mission Row
+	-- 1st floor
 	--
+
+	-- Roof stairs 1st floor
+	{
+		objName = 'v_ilev_ph_gendoor006',
+		objYaw = 90.0,
+		objCoords  = vector3(463.709, -983.927, 35.93),
+		textCoords = vector3(463.709, -983.927, 36.93),
+		authorizedJobs = { 'police' },
+		locked = true
+	},
+
+	-- Glass doors (balcony)
+	{
+		textCoords = vector3(429.232, -995.1, 36.737),
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 2.5,
+		doors = {
+			{
+				objName = 'slb2k11_glassdoor',
+				objYaw = -90.0,
+				objCoords = vector3(429.232, -995.639, 35.737)
+			},
+
+			{
+				objName = 'slb2k11_glassdoor',
+				objYaw = 90.0,
+				objCoords = vector3(429.232, -994.630, 35.737)
+			}
+		}
+	},
+
+	-- Rest room (balcony)
+	{
+		objName = 'slb2k11_SECDOOR',
+		objYaw = 0.0,
+		objCoords  = vector3(464.158, -1011.260, 33.011),
+		textCoords = vector3(463.491, -1011.162, 33.98),
+		authorizedJobs = { 'police' },
+		locked = true
+	},
+
+	--
+	-- Mission Row
+	-- cells (-1)
+	--
+
+	-- To storage / server / labo
+	{
+		textCoords = vector3(465.568, -990.0, 26.0682),
+		authorizedJobs = { 'police' },
+		locked = true,
+		distance = 2.5,
+		doors = {
+			{
+				objName = 'v_ilev_ph_gendoor003',
+				objYaw = 90.0,
+				objCoords = vector3(465.568, -988.703, 25.0682)
+			},
+
+			{
+				objName = 'v_ilev_ph_gendoor003',
+				objYaw = -90.0,
+				objCoords = vector3(465.568, -991.304, 25.0682)
+			}
+		}
+	},
+
+	-- Interview 1
+	{
+		objName = 'v_ilev_gtdoor',
+		objYaw = 180.0,
+		objCoords  = vector3(468.487, -1003.547, 25.0131),
+		textCoords = vector3(467.854, -1003.547, 26.0131),
+		authorizedJobs = { 'police' },
+		locked = true
+	},
+
+	-- Interview 2
+	{
+		objName = 'v_ilev_gtdoor',
+		objYaw = 180.0,
+		objCoords  = vector3(477.049, -1003.547, 25.0131),
+		textCoords = vector3(476.478, -1003.547, 26.0131),
+		authorizedJobs = { 'police' },
+		locked = true
+	},
+
+	-- New Cell 1
+	{
+		objName = 'v_ilev_gtdoor',
+		objYaw = 0.0,
+		objCoords  = vector3(467.192, -996.459, 25.0131),
+		textCoords = vector3(467.692, -996.459, 26.0131),
+		authorizedJobs = { 'police' },
+		locked = true
+	},
+
+	-- New Cell 2
+	{
+		objName = 'v_ilev_gtdoor',
+		objYaw = 0.0,
+		objCoords  = vector3(471.475, -996.459, 25.0131),
+		textCoords = vector3(471.975, -996.459, 26.0131),
+		authorizedJobs = { 'police' },
+		locked = true
+	},
+
+	-- New Cell 3
+	{
+		objName = 'v_ilev_gtdoor',
+		objYaw = 0.0,
+		objCoords  = vector3(475.754, -996.459, 25.0131),
+		textCoords = vector3(476.254, -996.459, 26.0131),
+		authorizedJobs = { 'police' },
+		locked = true
+	},
+
+	-- New Cell 4
+	{
+		objName = 'v_ilev_gtdoor',
+		objYaw = 0.0,
+		objCoords  = vector3(480.030, -996.459, 25.0131),
+		textCoords = vector3(480.530, -996.459, 26.0131),
+		authorizedJobs = { 'police' },
+		locked = true
+	},
 
 	-- Main Cells
 	{
@@ -153,10 +336,6 @@ Config.DoorList = {
 		locked = true
 	},
 
-	--
-	-- Mission Row Back
-	--
-
 	-- Back (double doors)
 	{
 		textCoords = vector3(468.6, -1014.4, 27.1),
@@ -191,45 +370,6 @@ Config.DoorList = {
 	},
 
 	--
-	-- Sandy Shores
-	--
-
-	-- Entrance
-	{
-		objName = 'v_ilev_shrfdoor',
-		objYaw = 30.0,
-		objCoords  = vector3(1855.1, 3683.5, 34.2),
-		textCoords = vector3(1855.1, 3683.5, 35.0),
-		authorizedJobs = { 'police' },
-		locked = false
-	},
-
-	--
-	-- Paleto Bay
-	--
-
-	-- Entrance (double doors)
-	{
-		textCoords = vector3(-443.5, 6016.3, 32.0),
-		authorizedJobs = { 'police' },
-		locked = false,
-		distance = 2.5,
-		doors = {
-			{
-				objName = 'v_ilev_shrf2door',
-				objYaw = -45.0,
-				objCoords  = vector3(-443.1, 6015.6, 31.7),
-			},
-
-			{
-				objName = 'v_ilev_shrf2door',
-				objYaw = 135.0,
-				objCoords  = vector3(-443.9, 6016.6, 31.7)
-			}
-		}
-	},
-
-	--
 	-- Bolingbroke Penitentiary
 	--
 
@@ -255,19 +395,42 @@ Config.DoorList = {
 	},
 
 	--
-	-- Addons
+	-- Sandy Shores
 	--
 
-	--[[
-	-- Entrance Gate (Mission Row mod) https://www.gta5-mods.com/maps/mission-row-pd-ymap-fivem-v1
-	{
-		objName = 'prop_gate_airport_01',
-		objCoords  = vector3(420.1, -1017.3, 28.0),
-		textCoords = vector3(420.1, -1021.0, 32.0),
-		authorizedJobs = { 'police' },
-		locked = true,
-		distance = 14,
-		size = 2
-	}
-	--]]
+	-- Entrance
+	--	{
+	--		objName = 'v_ilev_shrfdoor',
+	--		objYaw = 30.0,
+	--		objCoords  = vector3(1855.1, 3683.5, 34.2),
+	--		textCoords = vector3(1855.1, 3683.5, 35.0),
+	--		authorizedJobs = { 'police' },
+	--		locked = false
+	--	},
+
+	--
+	-- Paleto Bay
+	--
+
+	-- Entrance (double doors)
+	--	{
+	--		textCoords = vector3(-443.5, 6016.3, 32.0),
+	--		authorizedJobs = { 'police' },
+	--		locked = false,
+	--		distance = 2.5,
+	--		doors = {
+	--			{
+	--				objName = 'v_ilev_shrf2door',
+	--				objYaw = -45.0,
+	--				objCoords  = vector3(-443.1, 6015.6, 31.7),
+	--			},
+	--
+	--			{
+	--				objName = 'v_ilev_shrf2door',
+	--				objYaw = 135.0,
+	--				objCoords  = vector3(-443.9, 6016.6, 31.7)
+	--			}
+	--		}
+	--	},
+
 }
