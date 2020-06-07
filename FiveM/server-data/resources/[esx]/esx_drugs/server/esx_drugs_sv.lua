@@ -49,7 +49,7 @@ local function HarvestCoke(source)
 
 			local coke = xPlayer.getInventoryItem('coke')
 
-			if coke.weight ~= -1 and coke.count >= coke.weight then
+			if coke.limit ~= -1 and coke.count >= coke.limit then
 				TriggerClientEvent('esx:showNotification', source, _U('inv_full_coke'))
 			else
 				xPlayer.addInventoryItem('coke', 1)
@@ -222,7 +222,7 @@ local function HarvestMeth(source)
 
 			local meth = xPlayer.getInventoryItem('meth')
 
-			if meth.weight ~= -1 and meth.count >= meth.weight then
+			if meth.limit ~= -1 and meth.count >= meth.limit then
 				TriggerClientEvent('esx:showNotification', source, _U('inv_full_meth'))
 			else
 				xPlayer.addInventoryItem('meth', 1)
@@ -398,7 +398,7 @@ local function HarvestWeed(source)
 
 			local weed = xPlayer.getInventoryItem('weed')
 
-			if weed.weight ~= -1 and weed.count >= weed.weight then
+			if weed.limit ~= -1 and weed.count >= weed.limit then
 				TriggerClientEvent('esx:showNotification', source, _U('inv_full_weed'))
 			else
 				xPlayer.addInventoryItem('weed', 1)
@@ -569,7 +569,7 @@ local function HarvestOpium(source)
 
 			local opium = xPlayer.getInventoryItem('opium')
 
-			if opium.weight ~= -1 and opium.count >= opium.weight then
+			if opium.limit ~= -1 and opium.count >= opium.limit then
 				TriggerClientEvent('esx:showNotification', source, _U('inv_full_opium'))
 			else
 				xPlayer.addInventoryItem('opium', 1)

@@ -127,18 +127,6 @@ Config.DoorList = {
 			size = 2
 		},
 
-		-- Garage door
-		{
-			objName = 'lr_prop_supermod_door_01',
-			objYaw = 0.0,
-			objCoords  = vector3(-205.682, -1310.682, 30.298),
-			textCoords = vector3(-205.682, -1310.682, 33.5),
-			authorizedJobs = { 'mechanic' },
-			locked = false,
-			distance = 7,
-			size = 2
-		},
-
 	--
 	-- Mission Row
 	-- Ground floor (0)

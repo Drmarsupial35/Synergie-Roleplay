@@ -376,6 +376,10 @@ AddEventHandler('esx_ambulancejob:revive', function()
 		DoScreenFadeIn(800)
 	end)
 end)
+RegisterNetEvent('esx_ambulancejob:cant_carry')
+AddEventHandler('esx_ambulancejob:cant_carry', function()
+	ESX.ShowNotification(_U('max_item'))
+end)
 
 -- Load unloaded IPLs
 if Config.LoadIpl then

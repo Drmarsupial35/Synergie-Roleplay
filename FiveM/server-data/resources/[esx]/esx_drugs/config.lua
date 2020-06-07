@@ -9,9 +9,9 @@ Config.RequiredCopsMeth  = 2
 Config.RequiredCopsWeed  = 2
 Config.RequiredCopsOpium = 2
 
-Config.TimeToFarm    = 17 * 1000
-Config.TimeToProcess = 46 * 1000
-Config.TimeToSell    = 5  * 1000
+Config.TimeToFarm    = 4.5 * 1000
+Config.TimeToProcess = 7 * 1000
+Config.TimeToSell    = 1.5  * 1000
 
 Config.Locale = 'fr'
 

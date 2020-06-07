@@ -22,7 +22,7 @@ local function Harvest(source)
 			local xPlayer = ESX.GetPlayerFromId(source)
 			local GazBottleQuantity = xPlayer.getInventoryItem('gazbottle').count
 
-			if GazBottleQuantity >= 5 then
+			if GazBottleQuantity >= 10 then
 				TriggerClientEvent('esx:showNotification', source, _U('you_do_not_room'))
 			else
 				xPlayer.addInventoryItem('gazbottle', 1)
@@ -54,7 +54,7 @@ local function Harvest2(source)
 			local xPlayer = ESX.GetPlayerFromId(source)
 			local FixToolQuantity = xPlayer.getInventoryItem('fixtool').count
 
-			if FixToolQuantity >= 5 then
+			if FixToolQuantity >= 10 then
 				TriggerClientEvent('esx:showNotification', source, _U('you_do_not_room'))
 			else
 				xPlayer.addInventoryItem('fixtool', 1)
@@ -85,7 +85,7 @@ local function Harvest3(source)
 		if PlayersHarvesting3[source] == true then
 			local xPlayer = ESX.GetPlayerFromId(source)
 			local CaroToolQuantity = xPlayer.getInventoryItem('carotool').count
-			if CaroToolQuantity >= 5 then
+			if CaroToolQuantity >= 10 then
 				TriggerClientEvent('esx:showNotification', source, _U('you_do_not_room'))
 			else
 				xPlayer.addInventoryItem('carotool', 1)

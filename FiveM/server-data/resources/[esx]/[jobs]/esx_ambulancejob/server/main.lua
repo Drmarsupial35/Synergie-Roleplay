@@ -220,6 +220,7 @@ end)
 RegisterNetEvent('esx_ambulancejob:giveItem')
 AddEventHandler('esx_ambulancejob:giveItem', function(itemName, amount)
 	local xPlayer = ESX.GetPlayerFromId(source)
+	local item = xPlayer.getInventoryItem(itemName)
 
 	if xPlayer.job.name ~= 'ambulance' then
 		print(('[esx_ambulancejob] [^2INFO^7] "%s" attempted to spawn in an item!'):format(xPlayer.identifier))
@@ -228,7 +229,11 @@ AddEventHandler('esx_ambulancejob:giveItem', function(itemName, amount)
 		print(('[esx_ambulancejob] [^2INFO^7] "%s" attempted to spawn in an item!'):format(xPlayer.identifier))
 		return
 	end
-	xPlayer.addInventoryItem(itemName, amount)
+	if (item.limit == -1) or ((item.count + amount) < item.limit) then
+		xPlayer.addInventoryItem(itemName, amount)
+	else
+		TriggerClientEvent('esx_ambulancejob:cant_carry', source)
+	end
 end)
 
 TriggerEvent('es:addGroupCommand', 'revive', 'admin', function(source, args, user)
