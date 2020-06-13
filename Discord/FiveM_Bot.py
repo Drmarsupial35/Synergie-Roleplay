@@ -199,6 +199,7 @@ async def on_message(message):
                 embed.add_field(name=".add_react <ID> <Emoji>", value="Permet d'ajouter une réaction à un message", inline=False)
                 embed.add_field(name=".open_reu", value="Permet d'ouvrir le salon des réunions", inline=False)
                 embed.add_field(name=".close_reu", value="Permet de fermer le salon des réunions", inline=False)
+                embed.add_field(name=".purge <Nombre>", value="Permet de supprimer un certain nombre de messages dans un channel", inline=False)
                 embed.add_field(name=".help", value="Permet d'afficher la liste des commandes", inline=False)
                 await channel.send(content = author.mention, embed= embed)
             else:
@@ -222,6 +223,25 @@ async def on_message(message):
             else:
                 await channel.send(author.mention + ' Vous n\'avez pas la permission d\'utiliser cette commande !')
             await message.delete()
+
+        elif message.content.startswith('.purge'):
+            await message.delete()
+            if staff_role in author.roles:
+                args = content.split()
+                if len(args) < 2:
+                    await channel.send(author.mention + ' Cette commande demande 1 argument (Le nombre de message à supprimer)')
+                else:
+                    arg = args[1]
+                    if arg.isdigit():
+                        deletedMsg = await channel.purge(limit=int(arg), check=None)
+                        nb = str(len(deletedMsg))
+                        dm = await author.create_dm()
+                        await dm.send('Vous avez bien supprimé ' + nb + ' messages dans le salon **' + channel.name + '**')
+                    else:
+                        await channel.send(author.mention + ' Cette commande demande un nombre comme argument')
+            else:
+                await channel.send(author.mention + 'Vous n\'avez pas la permission d\'utiliser cette commande !')
+
 
 @client.event
 async def on_member_update(before, after):
