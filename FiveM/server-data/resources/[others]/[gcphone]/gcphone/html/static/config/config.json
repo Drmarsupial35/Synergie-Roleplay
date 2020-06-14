@@ -1,5 +1,5 @@
 {
-  "reseau": "Legatos SIM",
+  "reseau": "Synergia Com",
   "warningMessageCount": 250,
   "themeColor": "#303f9f",
   "colors": [
@@ -21,23 +21,23 @@
     "#8D6E63",
     "#78909C"
   ],
-
   "useFormatNumberFrance": false,
-
   "useWebRTCVocal": false,
   "RTCConfig": {
-    "iceServers": [{
-      "urls": ["turn:gannon.ovh"],
-      "username": "jojo",
-      "credential": "pass"
-    }]
+    "iceServers": [
+      {
+        "urls": [
+          "turn:gannon.ovh"
+        ],
+        "username": "jojo",
+        "credential": "pass"
+      }
+    ]
   },
-
   "//": "REQUIRE https://github.com/citizenfx/screenshot-basic or set false",
   "enableTakePhoto": true,
   "fileUploadService_Url": "https://wew.wtf/upload.php",
   "fileUploadService_Field": "files[]",
-
   "background": {
     "Calvin & Hobbes": "back001.jpg",
     "Destiny": "back002.jpg",
@@ -54,8 +54,6 @@
     "label": "Stormtrooper",
     "value": "back003.jpg"
   },
-
-
   "coque": {
     "Sansumg S8": "s8.png",
     "Iphone X": "iphonex.png",
@@ -66,12 +64,12 @@
     "label": "Sansumg S8",
     "value": "s8.png"
   },
-
-
-  "serviceCall": [{
+  "serviceCall": [
+    {
       "display": "Police",
-      "icon": "https://i.imgur.com/gMdFkk6.jpg",
-      "subMenu": [{
+      "icon": "https://i.imgur.com/AP28rKG.png",
+      "subMenu": [
+        {
           "title": "Envoyer un message",
           "eventName": "esx_addons_gcphone:call",
           "type": {
@@ -82,115 +80,169 @@
           "title": "Appeler le standard",
           "eventName": "gcphone:autoCallNumber",
           "type": {
-            "number": "911"
+            "number": "police"
+          }
+        },
+        {
+          "title": "Signaler un vol",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "police",
+            "message": "Vol en cours, merci de venir au plus vite !"
+          }
+        },
+        {
+          "title": "Signaler une agression",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "police",
+            "message": "Victime d'agression"
           }
         }
       ]
     },
     {
       "display": "Ambulance",
-      "icon": "https://i.imgur.com/pMe8CsO.png",
-      "subMenu": [{
-        "title": "Envoyer un message",
-        "eventName": "esx_addons_gcphone:call",
-        "type": {
-          "number": "ambulance"
+      "icon": "https://i.imgur.com/hlNA57K.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "ambulance"
+          }
+        },
+        {
+          "title": "Signaler un accident",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "ambulance",
+            "message": "Une personne a eu un accident, venez au plus vite !"
+          }
         }
-      }]
+      ]
     },
     {
       "display": "Mécano",
-      "icon": "https://i.imgur.com/iL1h6ry.jpg",
-      "subMenu": [{
-        "title": "Envoyer un message",
-        "eventName": "esx_addons_gcphone:call",
-        "type": {
-          "number": "mechanic"
+      "icon": "https://i.imgur.com/lmAgbHZ.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "mechanic"
+          }
+        },
+        {
+          "title": "Camion en panne",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "mechanic",
+            "message": "Bonjour, mon camion est en panne. Pouvez-vous intervenir ?"
+          }
+        },
+        {
+          "title": "Voiture en panne",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "mechanic",
+            "message": "Bonjour, ma voiture est en panne. Pouvez-vous intervenir ?"
+          }
+        },
+        {
+          "title": "Moto en panne",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "mechanic",
+            "message": "Bonjour, ma moto est en panne. Pouvez-vous intervenir ?"
+          }
+        },
+        {
+          "title": "Accident",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "mechanic",
+            "message": "Bonjour, un accident a eu lieu. Pouvez-vous intervenir ?"
+          }
         }
-      }]
+      ]
     },
     {
       "display": "Concessionnaire",
-      "icon": "https://i.imgur.com/ZRkFywm.png",
-      "subMenu": [{
-        "title": "Envoyer un message",
-        "eventName": "esx_addons_gcphone:call",
-        "type": {
-          "number": "cardealer"
+      "icon": "https://i.imgur.com/wfKGRhF.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "cardealer"
+          }
+        },
+        {
+          "title": "Rendez-vous vente véhicule",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "cardealer",
+            "message": "Bonjour, serait-il possible de prendre rendez-vous avec vous pour l'achat d'un véhicule ?"
+          }
         }
-      }]
+      ]
     },
     {
       "display": "Taxi",
-      "icon": "https://i.imgur.com/CgjJtmJ.jpg",
-      "subMenu": [{
-        "title": "Envoyer un message",
-        "eventName": "esx_addons_gcphone:call",
-        "type": {
-          "number": "taxi"
+      "icon": "https://i.imgur.com/yPNy9hi.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "taxi"
+          }
+        },
+        {
+          "title": "Course rapide",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "taxi",
+            "message": "Bonjour, serait-il possible de venir me prendre pour une course rapide ?"
+          }
+        },
+        {
+          "title": "Course longue",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "taxi",
+            "message": "Bonjour, serait-il possible de venir me prendre pour une course qui risque de durer ?"
+          }
         }
-      }]
+      ]
     },
     {
-      "display": "Avocat",
-      "icon": "https://i.imgur.com/Oizu5u4.jpg",
-      "subMenu": [{
-        "title": "Envoyer un message",
-        "eventName": "esx_addons_gcphone:call",
-        "type": {
-          "number": "avocat"
+      "display": "Vigneron",
+      "icon": "https://cdn.pixabay.com/photo/2017/01/18/20/09/grapes-1990795_960_720.png",
+      "subMenu": [
+        {
+          "title": "Envoyer un message",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "vigne"
+          }
+        },
+        {
+          "title": "Demande de rendez-vous",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "vigne",
+            "message": "Bonjour, je souhaiterais effectuer une commande. Êtes-vous disponibles ?"
+          }
         }
-      }]
-    },
-    {
-      "display": "Journaliste",
-      "icon": "https://i.imgur.com/qQXvJUO.jpg",
-      "subMenu": [{
-        "title": "Envoyer un message",
-        "eventName": "esx_addons_gcphone:call",
-        "type": {
-          "number": "journaliste"
-        }
-      }]
-    },
-    {
-      "display": "Banquier",
-      "icon": "https://i.imgur.com/Z3rDtnZ.jpg",
-      "subMenu": [{
-        "title": "Envoyer un message",
-        "eventName": "esx_addons_gcphone:call",
-        "type": {
-          "number": "banker"
-        }
-      }]
-    },
-    {
-      "display": "tacos",
-      "icon": "https://i.imgur.com/IZdKcUW.jpg",
-      "subMenu": [{
-        "title": "Envoyer un message",
-        "eventName": "esx_addons_gcphone:call",
-        "type": {
-          "number": "foodtruck"
-        }
-      }]
+      ]
     }
-  ],
 
-  "defaultContacts": [{
-      "number": "ambulance",
-      "display": "Ambulance",
-      "icon": "/html/static/img/icons_app/bank.png"
-    },
+  ],
+  "defaultContacts": [],
+  "apps": [
     {
-      "number": "police",
-      "display": "Police",
-      "backgroundColor": "blue",
-      "letter": "P"
-    }
-  ],
-
-  "apps": [{
       "name": "Twitter",
       "fr_FR__name": "Twitter",
       "en_US__name": "Twitter",
@@ -301,7 +353,7 @@
   ],
   "defaultLanguage": "fr_FR",
   "language": {
-     "fr_FR": {
+    "fr_FR": {
       "NAME": "Français",
       "PHONE_WARNING_MESSAGE": "Saturation mémoires !",
       "PHONE_WARNING_MESSAGE_MESS": "messages",
@@ -399,19 +451,37 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Oups ... votre mot de passe n'a pas pu être modifié",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Les mots de passe ne corresponde pas",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Mot de passe trop court",
-
-
       "TIMEAGO": [
         "à l'instant",
-        ["il y a %s seconde", "il y a %s secondes"],
-        ["il y a %s minute", "il y a %s minutes"],
-        ["il y a %s heure", "il y a %s heures"],
-        ["il y a %s jour", "il y a %s jours"],
-        ["il y a %s semaine", "il y a %s semaines"],
-        ["il y a %s mois", "il y a %s mois"],
-        ["il y a %s an", "il y a %s ans"]
+        [
+          "il y a %s seconde",
+          "il y a %s secondes"
+        ],
+        [
+          "il y a %s minute",
+          "il y a %s minutes"
+        ],
+        [
+          "il y a %s heure",
+          "il y a %s heures"
+        ],
+        [
+          "il y a %s jour",
+          "il y a %s jours"
+        ],
+        [
+          "il y a %s semaine",
+          "il y a %s semaines"
+        ],
+        [
+          "il y a %s mois",
+          "il y a %s mois"
+        ],
+        [
+          "il y a %s an",
+          "il y a %s ans"
+        ]
       ]
-
     },
     "en_US": {
       "NAME": "English",
@@ -503,16 +573,36 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Oops.... Your password could not be changed.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Passwords do not match",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Password too short",
-
       "TIMEAGO": [
         "just now",
-        ["%s second ago", "%s seconds ago"],
-        ["%s minute ago", "%s minutes ago"],
-        ["%s hour ago", "%s hours ago"],
-        ["%s day ago", "%s days ago"],
-        ["%s week ago", "%s weeks ago"],
-        ["%s month ago", "%s months ago"],
-        ["%s year ago", "%s years ago"]
+        [
+          "%s second ago",
+          "%s seconds ago"
+        ],
+        [
+          "%s minute ago",
+          "%s minutes ago"
+        ],
+        [
+          "%s hour ago",
+          "%s hours ago"
+        ],
+        [
+          "%s day ago",
+          "%s days ago"
+        ],
+        [
+          "%s week ago",
+          "%s weeks ago"
+        ],
+        [
+          "%s month ago",
+          "%s months ago"
+        ],
+        [
+          "%s year ago",
+          "%s years ago"
+        ]
       ]
     },
     "de_DE": {
@@ -611,16 +701,36 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Ups.... dein Passwort konnte nicht geändert werden.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Passwörter stimmen nicht überein",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Passwort zu kurz",
-
       "TIMEAGO": [
         "jetzt gerade",
-        ["vor %s Sekunde", "vor %s Sekunden"],
-        ["vor %s Minute", "vor %s Minuten"],
-        ["vor %s Stunde", "vor %s Stunden"],
-        ["vor %s Tag", "vor %s Tagen"],
-        ["vor %s Woche", "vor %s Wochen"],
-        ["vor %s Monat", "vor %s Monaten"],
-        ["vor %s Jahr", "vor %s Jahren"]
+        [
+          "vor %s Sekunde",
+          "vor %s Sekunden"
+        ],
+        [
+          "vor %s Minute",
+          "vor %s Minuten"
+        ],
+        [
+          "vor %s Stunde",
+          "vor %s Stunden"
+        ],
+        [
+          "vor %s Tag",
+          "vor %s Tagen"
+        ],
+        [
+          "vor %s Woche",
+          "vor %s Wochen"
+        ],
+        [
+          "vor %s Monat",
+          "vor %s Monaten"
+        ],
+        [
+          "vor %s Jahr",
+          "vor %s Jahren"
+        ]
       ]
     },
     "pl_PL": {
@@ -712,16 +822,35 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Ups....... Twoje hasło nie mogło zostać zmienione.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Hasła nie pasują do siebie.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Hasło jest za krótkie",
-
       "TIMEAGO": [
         "tylko teraz",
-        ["mniej niż minuta"],
-        ["około minuty", "%s minut"],
-        ["około godziny", "około %s godzin"],
-        ["około tygodnia", "%s tydzień"],
-        ["%s week ago", "%s weeks ago"],
-        ["około miesiąca", "%s miesięcy"],
-        ["około roku", "%s lat"]
+        [
+          "mniej niż minuta"
+        ],
+        [
+          "około minuty",
+          "%s minut"
+        ],
+        [
+          "około godziny",
+          "około %s godzin"
+        ],
+        [
+          "około tygodnia",
+          "%s tydzień"
+        ],
+        [
+          "%s week ago",
+          "%s weeks ago"
+        ],
+        [
+          "około miesiąca",
+          "%s miesięcy"
+        ],
+        [
+          "około roku",
+          "%s lat"
+        ]
       ]
     },
     "es_ES": {
@@ -813,19 +942,39 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Oops...... Su contraseña no se ha podido cambiar.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Las contraseñas no coinciden",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Contraseña demasiado corta",
-
       "TIMEAGO": [
         "ahora",
-        ["hace %s segundo", "hace %s segundos"],
-        ["hace %s minuto", "hace %s minutos"],
-        ["hace %s hora", "hace %s horas"],
-        ["hace %s día", "hace %s días"],
-        ["hace %s semana", "hace %s semanas"],
-        ["hace %s mes", "hace %s meses"],
-        ["hace %s año", "hace %s años"]
+        [
+          "hace %s segundo",
+          "hace %s segundos"
+        ],
+        [
+          "hace %s minuto",
+          "hace %s minutos"
+        ],
+        [
+          "hace %s hora",
+          "hace %s horas"
+        ],
+        [
+          "hace %s día",
+          "hace %s días"
+        ],
+        [
+          "hace %s semana",
+          "hace %s semanas"
+        ],
+        [
+          "hace %s mes",
+          "hace %s meses"
+        ],
+        [
+          "hace %s año",
+          "hace %s años"
+        ]
       ]
     },
-     "cs_CZ": {
+    "cs_CZ": {
       "NAME": "Čeština",
       "PHONE_WARNING_MESSAGE": "připomínka",
       "PHONE_WARNING_MESSAGE_MESS": "zprávy",
@@ -915,16 +1064,36 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Oops.... Tvé heslo nemohlo být změněno.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Hesla se neshodují",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Heslo je příliš krátké",
-
       "TIMEAGO": [
         "nyní",
-        ["před  %s sekundou", "před %s sekundami"],
-        ["před %s minutou", "před %s minutami"],
-        ["před %s hodinou", "před %s hodinami"],
-        ["před %s dnem", "před %s dny"],
-        ["před %s týdnem", "před %s týdny"],
-        ["před %s měsícem", "před %s měsíci"],
-        ["před %s rokem", "před %s lety"]
+        [
+          "před  %s sekundou",
+          "před %s sekundami"
+        ],
+        [
+          "před %s minutou",
+          "před %s minutami"
+        ],
+        [
+          "před %s hodinou",
+          "před %s hodinami"
+        ],
+        [
+          "před %s dnem",
+          "před %s dny"
+        ],
+        [
+          "před %s týdnem",
+          "před %s týdny"
+        ],
+        [
+          "před %s měsícem",
+          "před %s měsíci"
+        ],
+        [
+          "před %s rokem",
+          "před %s lety"
+        ]
       ]
     }
   }
