@@ -28,15 +28,20 @@ Config.PolicingPoundPrice  = 100 -- Policing Pound Price.
 Config.AmbulancePoundPrice = 100 -- Ambulance Pound Price.
 Config.TaxiPoundPrice 	   = 100
 Config.MechanicPoundPrice  = 100
+Config.VignePoundPrice  = 100
+Config.MafiaPoundPrice  = 100
+Config.BallasPoundPrice  = 100
+Config.VagosPoundPrice  = 100
+Config.FamiliesPoundPrice  = 100
 
 Config.UseCarGarages        = true -- Allows use of Car Garages.
-Config.UseBoatGarages       = true -- Allows use of Boat Garages.
-Config.UseAircraftGarages   = true -- Allows use of Aircraft Garages.
+Config.UseBoatGarages       = false -- Allows use of Boat Garages.
+Config.UseAircraftGarages   = false -- Allows use of Aircraft Garages.
 Config.UsePrivateCarGarages = true -- Allows use of Private Car Garages.
 Config.UseJobCarGarages     = true -- Allows use of Job Garages.
 
 Config.DontShowPoundCarsInGarage = false -- If set to true it won't show Cars at the Pound in the Garage.
-Config.ShowVehicleLocation       = false -- If set to true it will show the Location of the Vehicle in the Pound/Garage in the Garage menu.
+Config.ShowVehicleLocation       = true -- If set to true it will show the Location of the Vehicle in the Pound/Garage in the Garage menu.
 Config.UseVehicleNamesLua        = true -- Must setup a vehicle_names.lua for Custom Addon Vehicles.
 
 Config.ShowGarageSpacer1 = true -- If true it shows Spacer 1 in the List.
@@ -105,8 +110,8 @@ Config.PolicePounds = {
 		SpawnPoint = { x = 391.74, y = -1619.0, z = 28.29, h = 318.34 }
 	},
 	Pound_Sandy = {
-		PoundPoint = { x = 1646.01, y = 3812.06, z = 37.65 },
-		SpawnPoint = { x = 1627.84, y = 3788.45, z = 33.77, h = 308.53 }
+		PoundPoint = { x = 1725.341, y = 3689.487, z = 33.639 },
+		SpawnPoint = { x = 1721.919, y = 3686.766, z = 33.683, h = 148.786 }
 	},
 	Pound_Paleto = {
 		PoundPoint = { x = -223.6, y = 6243.37, z = 30.49 },
@@ -120,8 +125,8 @@ Config.AmbulancePounds = {
 		SpawnPoint = { x = 391.74, y = -1619.0, z = 28.29, h = 318.34 }
 	},
 	Pound_Sandy = {
-		PoundPoint = { x = 1646.01, y = 3812.06, z = 37.65 },
-		SpawnPoint = { x = 1627.84, y = 3788.45, z = 33.77, h = 308.53 }
+		PoundPoint = { x = 1725.341, y = 3689.487, z = 33.639 },
+		SpawnPoint = { x = 1721.919, y = 3686.766, z = 33.683, h = 148.786 }
 	},
 	Pound_Paleto = {
 		PoundPoint = { x = -223.6, y = 6243.37, z = 30.49 },
@@ -135,8 +140,8 @@ Config.TaxiPounds = {
 		SpawnPoint = { x = 391.74, y = -1619.0, z = 28.29, h = 318.34 }
 	},
 	Pound_Sandy = {
-		PoundPoint = { x = 1646.01, y = 3812.06, z = 37.65 },
-		SpawnPoint = { x = 1627.84, y = 3788.45, z = 33.77, h = 308.53 }
+		PoundPoint = { x = 1725.341, y = 3689.487, z = 33.639 },
+		SpawnPoint = { x = 1721.919, y = 3686.766, z = 33.683, h = 148.786 }
 	},
 	Pound_Paleto = {
 		PoundPoint = { x = -223.6, y = 6243.37, z = 30.49 },
@@ -150,11 +155,86 @@ Config.MechanicPounds = {
 		SpawnPoint = { x = 391.74, y = -1619.0, z = 28.29, h = 318.34 }
 	},
 	Pound_Sandy = {
-		PoundPoint = { x = 1646.01, y = 3812.06, z = 37.65 },
-		SpawnPoint = { x = 1627.84, y = 3788.45, z = 33.77, h = 308.53 }
+		PoundPoint = { x = 1725.341, y = 3689.487, z = 33.639 },
+		SpawnPoint = { x = 1721.919, y = 3686.766, z = 33.683, h = 148.786 }
 	},
 	Pound_Paleto = {
 		PoundPoint = { x = -223.6, y = 6243.37, z = 30.49 },
+		SpawnPoint = { x = -230.88, y = 6255.89, z = 30.49, h = 136.5 }
+	}
+}
+
+Config.VignePounds = {
+	Pound_LosSantos = {
+		PoundPoint = { x = 374.42, y = -1620.68, z = 28.29 },
+		SpawnPoint = { x = 391.74, y = -1619.0, z = 28.29, h = 318.34 }
+	},
+	Pound_Sandy = {
+		PoundPoint = { x = 1725.341, y = 3689.487, z = 33.639 },
+		SpawnPoint = { x = 1721.919, y = 3686.766, z = 33.683, h = 148.786 }
+	},
+	Pound_Paleto = {
+		PoundPoint = { x = -223.6, y = 6243.37, z = 30.49 },
+		SpawnPoint = { x = -230.88, y = 6255.89, z = 30.49, h = 136.5 }
+	}
+}
+
+Config.MafiaPounds = {
+	Pound_LosSantos = {
+		PoundPoint = { x = 388.941, y = -1632.528, z = 28.292 },
+		SpawnPoint = { x = 391.74, y = -1619.0, z = 28.29, h = 318.34 }
+	},
+	Pound_Sandy = {
+		PoundPoint = { x = 1707.594, y = 3693.589, z = 33.504 },
+		SpawnPoint = { x = 1721.919, y = 3686.766, z = 33.683, h = 148.786 }
+	},
+	Pound_Paleto = {
+		PoundPoint = { x = -231.52, y = 6235.384, z = 30.495 },
+		SpawnPoint = { x = -230.88, y = 6255.89, z = 30.49, h = 136.5 }
+	}
+}
+
+Config.BallasPounds = {
+	Pound_LosSantos = {
+		PoundPoint = { x = 388.941, y = -1632.528, z = 28.292 },
+		SpawnPoint = { x = 391.74, y = -1619.0, z = 28.29, h = 318.34 }
+	},
+	Pound_Sandy = {
+		PoundPoint = { x = 1707.594, y = 3693.589, z = 33.504 },
+		SpawnPoint = { x = 1721.919, y = 3686.766, z = 33.683, h = 148.786 }
+	},
+	Pound_Paleto = {
+		PoundPoint = { x = -231.52, y = 6235.384, z = 30.495 },
+		SpawnPoint = { x = -230.88, y = 6255.89, z = 30.49, h = 136.5 }
+	}
+}
+
+Config.VagosPounds = {
+	Pound_LosSantos = {
+		PoundPoint = { x = 388.941, y = -1632.528, z = 28.292 },
+		SpawnPoint = { x = 391.74, y = -1619.0, z = 28.29, h = 318.34 }
+	},
+	Pound_Sandy = {
+		PoundPoint = { x = 1707.594, y = 3693.589, z = 33.504 },
+		SpawnPoint = { x = 1721.919, y = 3686.766, z = 33.683, h = 148.786 }
+	},
+	Pound_Paleto = {
+		PoundPoint = { x = -231.52, y = 6235.384, z = 30.495 },
+		SpawnPoint = { x = -230.88, y = 6255.89, z = 30.49, h = 136.5 }
+	}
+}
+
+Config.FamiliesPounds = {
+	Pound_LosSantos = {
+		PoundPoint = { x = 388.941, y = -1632.528, z = 28.292 },
+		SpawnPoint = { x = 391.74, y = -1619.0, z = 28.29, h = 318.34 }
+	},
+	Pound_Sandy = {
+		PoundPoint = { x = 1707.594, y = 3693.589, z = 33.504 },
+		SpawnPoint = { x = 1721.919, y = 3686.766, z = 33.683, h = 148.786 }
+	},
+	Pound_Paleto = {
+		PoundPoint = { x = -231.52, y = 6235.384, z = 30.495 },
 		SpawnPoint = { x = -230.88, y = 6255.89, z = 30.49, h = 136.5 }
 	}
 }
@@ -223,6 +303,12 @@ Config.CarGarages = {
 		DeletePoint = { x = 888.428, y = -182.891, z = 72.600 },
 		active = false
 	},
+	Garage_Vigne = {
+		GaragePoint = { x = -1923.964, y = 2036.383, z = 139.735 },
+		SpawnPoint = { x = -1913.328, y = 2033.855, z = 139.738, h = 250.301 },
+		DeletePoint = { x = -1891.276, y = 2046.085, z = 139.859 },
+		active = false
+	},
 
 }
 
@@ -232,8 +318,8 @@ Config.CarPounds = {
 		SpawnPoint = { x = 405.64, y = -1643.4, z = 27.61, h = 229.54 }
 	},
 	Pound_Sandy = {
-		PoundPoint = { x = 1651.38, y = 3804.84, z = 37.65 },
-		SpawnPoint = { x = 1627.84, y = 3788.45, z = 33.77, h = 308.53 }
+		PoundPoint = { x = 1723.906, y = 3696.230, z = 33.422 },
+		SpawnPoint = { x = 1721.919, y = 3686.766, z = 33.683, h = 148.786 }
 	},
 	Pound_Paleto = {
 		PoundPoint = { x = -234.82, y = 6198.65, z = 30.94 },

@@ -47,12 +47,20 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	end
 
 	ESX.PlayerData = xPlayer
+	deleteBlips()
 	refreshBlips()
 end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
     ESX.PlayerData.job = job
+	deleteBlips()
+	refreshBlips()
+end)
+
+RegisterNetEvent('esx:setJob2')
+AddEventHandler('esx:setJob2', function(job2)
+    ESX.PlayerData.job2 = job2
 	deleteBlips()
 	refreshBlips()
 end)
@@ -98,6 +106,16 @@ function OpenMenuGarage(PointType)
 		table.insert(elements, {label = _U('return_owned_taxi').." ($"..Config.TaxiPoundPrice..")", value = 'return_owned_taxi'})
 	elseif PointType == 'mechanic_pound_point' then
 		table.insert(elements, {label = _U('return_owned_mechanic').." ($"..Config.MechanicPoundPrice..")", value = 'return_owned_mechanic'})
+	elseif PointType == 'vigne_pound_point' then
+		table.insert(elements, {label = _U('return_owned_vigne').." ($"..Config.VignePoundPrice..")", value = 'return_owned_vigne'})
+	elseif PointType == 'mafia_pound_point' then
+		table.insert(elements, {label = _U('return_owned_mafia').." ($"..Config.MafiaPoundPrice..")", value = 'return_owned_Mafia'})
+	elseif PointType == 'vagos_pound_point' then
+		table.insert(elements, {label = _U('return_owned_vagos').." ($"..Config.VagosPoundPrice..")", value = 'return_owned_vagos'})
+	elseif PointType == 'ballas_pound_point' then
+		table.insert(elements, {label = _U('return_owned_ballas').." ($"..Config.BallasPoundPrice..")", value = 'return_owned_ballas'})
+	elseif PointType == 'families_pound_point' then
+		table.insert(elements, {label = _U('return_owned_families').." ($"..Config.FamiliesPoundPrice..")", value = 'return_owned_families'})
 	end
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'garage_menu', {
@@ -135,6 +153,16 @@ function OpenMenuGarage(PointType)
 			ReturnOwnedTaxiMenu()
 		elseif action == 'return_owned_mechanic' then
 			ReturnOwnedMechanicMenu()
+		elseif action == 'return_owned_vigne' then
+			ReturnOwnedVigneMenu()
+		elseif action == 'return_owned_ballas' then
+			ReturnOwnedBallasMenu()
+		elseif action == 'return_owned_vagos' then
+			ReturnOwnedVagosMenu()
+		elseif action == 'return_owned_mafia' then
+			ReturnOwnedMafiaMenu()
+		elseif action == 'return_owned_families' then
+			ReturnOwnedFamiliesMenu()
 		end
 	end, function(data, menu)
 		menu.close()
@@ -941,6 +969,306 @@ function ReturnOwnedMechanicMenu()
 	end)
 end
 
+function ReturnOwnedVigneMenu()
+	ESX.TriggerServerCallback('esx_advancedgarage:getOutOwnedVigneCars', function(ownedVigneCars)
+		local elements = {}
+
+		if Config.ShowPoundSpacer2 then
+			table.insert(elements, {label = _U('spacer2')})
+		end
+
+		if Config.ShowPoundSpacer3 then
+			table.insert(elements, {label = _U('spacer3')})
+		end
+
+		for _,v in pairs(ownedVigneCars) do
+			if Config.UseVehicleNamesLua then
+				local hashVehicule = v.model
+				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
+				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
+				local plate        = v.plate
+				local labelvehicle
+
+				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+
+				table.insert(elements, {label = labelvehicle, value = v})
+			else
+				local hashVehicule = v.model
+				local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
+				local plate        = v.plate
+				local labelvehicle
+
+				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+
+				table.insert(elements, {label = labelvehicle, value = v})
+			end
+		end
+
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_vigne', {
+			css		 = 'fourriere',
+			title    = _U('pound_vigne'),
+			align    = 'top-left',
+			elements = elements
+		}, function(data, menu)
+			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyVigne', function(hasEnoughMoney)
+				if hasEnoughMoney then
+					TriggerServerEvent('esx_advancedgarage:payVigne')
+					SpawnPoundedVehicle(data.current.value, data.current.value.plate)
+				else
+					ESX.ShowNotification(_U('not_enough_money'))
+				end
+			end)
+		end, function(data, menu)
+			menu.close()
+		end)
+	end)
+end
+
+function ReturnOwnedMafiaMenu()
+	ESX.TriggerServerCallback('esx_advancedgarage:getOutOwnedMafiaCars', function(ownedMafiaCars)
+		local elements = {}
+
+		if Config.ShowPoundSpacer2 then
+			table.insert(elements, {label = _U('spacer2')})
+		end
+
+		if Config.ShowPoundSpacer3 then
+			table.insert(elements, {label = _U('spacer3')})
+		end
+
+		for _,v in pairs(ownedMafiaCars) do
+			if Config.UseVehicleNamesLua then
+				local hashVehicule = v.model
+				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
+				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
+				local plate        = v.plate
+				local labelvehicle
+
+				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+
+				table.insert(elements, {label = labelvehicle, value = v})
+			else
+				local hashVehicule = v.model
+				local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
+				local plate        = v.plate
+				local labelvehicle
+
+				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+
+				table.insert(elements, {label = labelvehicle, value = v})
+			end
+		end
+
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_mafia', {
+			css		 = 'fourriere',
+			title    = _U('pound_mafia'),
+			align    = 'top-left',
+			elements = elements
+		}, function(data, menu)
+			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyMafia', function(hasEnoughMoney)
+				if hasEnoughMoney then
+					TriggerServerEvent('esx_advancedgarage:payMafia')
+					SpawnPoundedVehicle(data.current.value, data.current.value.plate)
+				else
+					ESX.ShowNotification(_U('not_enough_money'))
+				end
+			end)
+		end, function(data, menu)
+			menu.close()
+		end)
+	end)
+end
+
+function ReturnOwnedBallasMenu()
+	ESX.TriggerServerCallback('esx_advancedgarage:getOutOwnedBallasCars', function(ownedBallasCars)
+		local elements = {}
+
+		if Config.ShowPoundSpacer2 then
+			table.insert(elements, {label = _U('spacer2')})
+		end
+
+		if Config.ShowPoundSpacer3 then
+			table.insert(elements, {label = _U('spacer3')})
+		end
+
+		for _,v in pairs(ownedBallasCars) do
+			if Config.UseVehicleNamesLua then
+				local hashVehicule = v.model
+				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
+				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
+				local plate        = v.plate
+				local labelvehicle
+
+				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+
+				table.insert(elements, {label = labelvehicle, value = v})
+			else
+				local hashVehicule = v.model
+				local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
+				local plate        = v.plate
+				local labelvehicle
+
+				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+
+				table.insert(elements, {label = labelvehicle, value = v})
+			end
+		end
+
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_ballas', {
+			css		 = 'fourriere',
+			title    = _U('pound_ballas'),
+			align    = 'top-left',
+			elements = elements
+		}, function(data, menu)
+			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyBallas', function(hasEnoughMoney)
+				if hasEnoughMoney then
+					TriggerServerEvent('esx_advancedgarage:payBallas')
+					SpawnPoundedVehicle(data.current.value, data.current.value.plate)
+				else
+					ESX.ShowNotification(_U('not_enough_money'))
+				end
+			end)
+		end, function(data, menu)
+			menu.close()
+		end)
+	end)
+end
+
+function ReturnOwnedVagosMenu()
+	ESX.TriggerServerCallback('esx_advancedgarage:getOutOwnedVagosCars', function(ownedVagosCars)
+		local elements = {}
+
+		if Config.ShowPoundSpacer2 then
+			table.insert(elements, {label = _U('spacer2')})
+		end
+
+		if Config.ShowPoundSpacer3 then
+			table.insert(elements, {label = _U('spacer3')})
+		end
+
+		for _,v in pairs(ownedVagosCars) do
+			if Config.UseVehicleNamesLua then
+				local hashVehicule = v.model
+				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
+				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
+				local plate        = v.plate
+				local labelvehicle
+
+				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+
+				table.insert(elements, {label = labelvehicle, value = v})
+			else
+				local hashVehicule = v.model
+				local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
+				local plate        = v.plate
+				local labelvehicle
+
+				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+
+				table.insert(elements, {label = labelvehicle, value = v})
+			end
+		end
+
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_vagos', {
+			css		 = 'fourriere',
+			title    = _U('pound_vagos'),
+			align    = 'top-left',
+			elements = elements
+		}, function(data, menu)
+			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyVagos', function(hasEnoughMoney)
+				if hasEnoughMoney then
+					TriggerServerEvent('esx_advancedgarage:payVagos')
+					SpawnPoundedVehicle(data.current.value, data.current.value.plate)
+				else
+					ESX.ShowNotification(_U('not_enough_money'))
+				end
+			end)
+		end, function(data, menu)
+			menu.close()
+		end)
+	end)
+end
+
+function ReturnOwnedFamiliesMenu()
+	ESX.TriggerServerCallback('esx_advancedgarage:getOutOwnedFamiliesCars', function(ownedFamiliesCars)
+		local elements = {}
+
+		if Config.ShowPoundSpacer2 then
+			table.insert(elements, {label = _U('spacer2')})
+		end
+
+		if Config.ShowPoundSpacer3 then
+			table.insert(elements, {label = _U('spacer3')})
+		end
+
+		for _,v in pairs(ownedFamiliesCars) do
+			if Config.UseVehicleNamesLua then
+				local hashVehicule = v.model
+				local aheadVehName = GetDisplayNameFromVehicleModel(hashVehicule)
+				local vehicleName  = GetLabelText(aheadVehName)
+
+				if vehicleName == 'NULL' then
+					vehicleName = aheadVehName
+				end
+
+				local plate        = v.plate
+				local labelvehicle
+
+				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+
+				table.insert(elements, {label = labelvehicle, value = v})
+			else
+				local hashVehicule = v.model
+				local vehicleName  = GetDisplayNameFromVehicleModel(hashVehicule)
+				local plate        = v.plate
+				local labelvehicle
+
+				labelvehicle = '| '..plate..' | '..vehicleName..' | '.._U('return')..' |'
+
+				table.insert(elements, {label = labelvehicle, value = v})
+			end
+		end
+
+		ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'return_owned_families', {
+			css		 = 'fourriere',
+			title    = _U('pound_families'),
+			align    = 'top-left',
+			elements = elements
+		}, function(data, menu)
+			ESX.TriggerServerCallback('esx_advancedgarage:checkMoneyFamilies', function(hasEnoughMoney)
+				if hasEnoughMoney then
+					TriggerServerEvent('esx_advancedgarage:payFamilies')
+					SpawnPoundedVehicle(data.current.value, data.current.value.plate)
+				else
+					ESX.ShowNotification(_U('not_enough_money'))
+				end
+			end)
+		end, function(data, menu)
+			menu.close()
+		end)
+	end)
+end
+
 -- Repair Vehicles
 function RepairVehicle(apprasial, vehicle, vehicleProps)
 	ESX.UI.Menu.CloseAll()
@@ -1062,6 +1390,26 @@ AddEventHandler('esx_advancedgarage:hasEnteredMarker', function(zone)
 		CurrentAction     = 'mechanic_pound_point'
 		CurrentActionMsg  = _U('press_to_impound')
 		CurrentActionData = {}
+	elseif zone == 'vigne_pound_point' then
+		CurrentAction     = 'vigne_pound_point'
+		CurrentActionMsg  = _U('press_to_impound')
+		CurrentActionData = {}
+	elseif zone == 'mafia_pound_point' then
+		CurrentAction     = 'mafia_pound_point'
+		CurrentActionMsg  = _U('press_to_impound')
+		CurrentActionData = {}
+	elseif zone == 'ballas_pound_point' then
+		CurrentAction     = 'ballas_pound_point'
+		CurrentActionMsg  = _U('press_to_impound')
+		CurrentActionData = {}
+	elseif zone == 'vagos_pound_point' then
+		CurrentAction     = 'vagos_pound_point'
+		CurrentActionMsg  = _U('press_to_impound')
+		CurrentActionData = {}
+	elseif zone == 'families_pound_point' then
+		CurrentAction     = 'families_pound_point'
+		CurrentActionMsg  = _U('press_to_impound')
+		CurrentActionData = {}
 	end
 end)
 
@@ -1173,6 +1521,51 @@ Citizen.CreateThread(function()
 
 			if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == 'mechanic' then
 				for k,v in pairs(Config.MechanicPounds) do
+					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.DrawDistance) then
+						canSleep = false
+						DrawMarker(Config.MarkerType, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.JobPoundMarker.x, Config.JobPoundMarker.y, Config.JobPoundMarker.z, Config.JobPoundMarker.r, Config.JobPoundMarker.g, Config.JobPoundMarker.b, 100, false, true, 2, false, false, false, false)
+					end
+				end
+			end
+
+			if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == 'vigne' then
+				for k,v in pairs(Config.VignePounds) do
+					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.DrawDistance) then
+						canSleep = false
+						DrawMarker(Config.MarkerType, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.JobPoundMarker.x, Config.JobPoundMarker.y, Config.JobPoundMarker.z, Config.JobPoundMarker.r, Config.JobPoundMarker.g, Config.JobPoundMarker.b, 100, false, true, 2, false, false, false, false)
+					end
+				end
+			end
+
+			if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'mafia' then
+				for k,v in pairs(Config.MafiaPounds) do
+					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.DrawDistance) then
+						canSleep = false
+						DrawMarker(Config.MarkerType, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.JobPoundMarker.x, Config.JobPoundMarker.y, Config.JobPoundMarker.z, Config.JobPoundMarker.r, Config.JobPoundMarker.g, Config.JobPoundMarker.b, 100, false, true, 2, false, false, false, false)
+					end
+				end
+			end
+
+			if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'ballas' then
+				for k,v in pairs(Config.BallasPounds) do
+					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.DrawDistance) then
+						canSleep = false
+						DrawMarker(Config.MarkerType, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.JobPoundMarker.x, Config.JobPoundMarker.y, Config.JobPoundMarker.z, Config.JobPoundMarker.r, Config.JobPoundMarker.g, Config.JobPoundMarker.b, 100, false, true, 2, false, false, false, false)
+					end
+				end
+			end
+
+			if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'vagos' then
+				for k,v in pairs(Config.VagosPounds) do
+					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.DrawDistance) then
+						canSleep = false
+						DrawMarker(Config.MarkerType, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.JobPoundMarker.x, Config.JobPoundMarker.y, Config.JobPoundMarker.z, Config.JobPoundMarker.r, Config.JobPoundMarker.g, Config.JobPoundMarker.b, 100, false, true, 2, false, false, false, false)
+					end
+				end
+			end
+
+			if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'families' then
+				for k,v in pairs(Config.FamiliesPounds) do
 					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.DrawDistance) then
 						canSleep = false
 						DrawMarker(Config.MarkerType, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.JobPoundMarker.x, Config.JobPoundMarker.y, Config.JobPoundMarker.z, Config.JobPoundMarker.r, Config.JobPoundMarker.g, Config.JobPoundMarker.b, 100, false, true, 2, false, false, false, false)
@@ -1327,6 +1720,56 @@ Citizen.CreateThread(function()
 					end
 				end
 			end
+
+			if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == 'vigne' then
+				for k,v in pairs(Config.VignePounds) do
+					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.JobPoundMarker.x) then
+						isInMarker  = true
+						this_Garage = v
+						currentZone = 'vigne_pound_point'
+					end
+				end
+			end
+
+			if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'mafia' then
+				for k,v in pairs(Config.MafiaPounds) do
+					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.JobPoundMarker.x) then
+						isInMarker  = true
+						this_Garage = v
+						currentZone = 'mafia_pound_point'
+					end
+				end
+			end
+
+			if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'ballas' then
+				for k,v in pairs(Config.BallasPounds) do
+					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.JobPoundMarker.x) then
+						isInMarker  = true
+						this_Garage = v
+						currentZone = 'ballas_pound_point'
+					end
+				end
+			end
+
+			if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'vagos' then
+				for k,v in pairs(Config.VagosPounds) do
+					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.JobPoundMarker.x) then
+						isInMarker  = true
+						this_Garage = v
+						currentZone = 'vagos_pound_point'
+					end
+				end
+			end
+
+			if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'families' then
+				for k,v in pairs(Config.FamiliesPounds) do
+					if (GetDistanceBetweenCoords(coords, v.PoundPoint.x, v.PoundPoint.y, v.PoundPoint.z, true) < Config.JobPoundMarker.x) then
+						isInMarker  = true
+						this_Garage = v
+						currentZone = 'families_pound_point'
+					end
+				end
+			end
 		end
 
 		if isInMarker and not hasAlreadyEnteredMarker then
@@ -1381,6 +1824,16 @@ Citizen.CreateThread(function()
 					OpenMenuGarage('taxi_pound_point')
 				elseif CurrentAction == 'mechanic_pound_point' then
 					OpenMenuGarage('mechanic_pound_point')
+				elseif CurrentAction == 'vigne_pound_point' then
+					OpenMenuGarage('vigne_pound_point')
+				elseif CurrentAction == 'mafia_pound_point' then
+					OpenMenuGarage('mafia_pound_point')
+				elseif CurrentAction == 'ballas_pound_point' then
+					OpenMenuGarage('ballas_pound_point')
+				elseif CurrentAction == 'vagos_pound_point' then
+					OpenMenuGarage('vagos_pound_point')
+				elseif CurrentAction == 'families_pound_point' then
+					OpenMenuGarage('families_pound_point')
 				end
 
 				CurrentAction = nil
@@ -1537,6 +1990,66 @@ function refreshBlips()
 				table.insert(JobBlips, {
 					coords = { v.PoundPoint.x, v.PoundPoint.y },
 					text   = _U('blip_mechanic_pound'),
+					sprite = 238,
+					color  = 75,
+					scale  = Config.BlipJobPound.Scale
+				})
+			end
+		end
+
+		if ESX.PlayerData.job ~= nil and ESX.PlayerData.job.name == 'vigne' then
+			for k,v in pairs(Config.VignePounds) do
+				table.insert(JobBlips, {
+					coords = { v.PoundPoint.x, v.PoundPoint.y },
+					text   = _U('blip_vigne_pound'),
+					sprite = 238,
+					color  = 75,
+					scale  = Config.BlipJobPound.Scale
+				})
+			end
+		end
+
+		if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'mafia' then
+			for k,v in pairs(Config.MafiaPounds) do
+				table.insert(JobBlips, {
+					coords = { v.PoundPoint.x, v.PoundPoint.y },
+					text   = _U('blip_mafia_pound'),
+					sprite = 238,
+					color  = 75,
+					scale  = Config.BlipJobPound.Scale
+				})
+			end
+		end
+
+		if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'ballas' then
+			for k,v in pairs(Config.BallasPounds) do
+				table.insert(JobBlips, {
+					coords = { v.PoundPoint.x, v.PoundPoint.y },
+					text   = _U('blip_ballas_pound'),
+					sprite = 238,
+					color  = 75,
+					scale  = Config.BlipJobPound.Scale
+				})
+			end
+		end
+
+		if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'vagos' then
+			for k,v in pairs(Config.VagosPounds) do
+				table.insert(JobBlips, {
+					coords = { v.PoundPoint.x, v.PoundPoint.y },
+					text   = _U('blip_vagos_pound'),
+					sprite = 238,
+					color  = 75,
+					scale  = Config.BlipJobPound.Scale
+				})
+			end
+		end
+
+		if ESX.PlayerData.job2 ~= nil and ESX.PlayerData.job2.name == 'families' then
+			for k,v in pairs(Config.FamiliesPounds) do
+				table.insert(JobBlips, {
+					coords = { v.PoundPoint.x, v.PoundPoint.y },
+					text   = _U('blip_families_pound'),
 					sprite = 238,
 					color  = 75,
 					scale  = Config.BlipJobPound.Scale

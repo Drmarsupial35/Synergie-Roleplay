@@ -296,6 +296,86 @@ ESX.RegisterServerCallback('esx_advancedgarage:getOutOwnedMechanicCars', functio
 	end)
 end)
 
+ESX.RegisterServerCallback('esx_advancedgarage:getOutOwnedVigneCars', function(source, cb)
+	local ownedVigneCars = {}
+
+	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND job = @job AND `stored` = @stored', {
+		['@owner'] = 'society:vigne',
+		['@job']    = 'vigne',
+		['@stored'] = false
+	}, function(data)
+		for _,v in pairs(data) do
+			local vehicle = json.decode(v.vehicle)
+			table.insert(ownedVigneCars, vehicle)
+		end
+		cb(ownedVigneCars)
+	end)
+end)
+
+ESX.RegisterServerCallback('esx_advancedgarage:getOutOwnedMafiaCars', function(source, cb)
+	local ownedMafiaCars = {}
+
+	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND job = @job AND `stored` = @stored', {
+		['@owner'] = 'society:mafia',
+		['@job']    = 'mafia',
+		['@stored'] = false
+	}, function(data)
+		for _,v in pairs(data) do
+			local vehicle = json.decode(v.vehicle)
+			table.insert(ownedMafiaCars, vehicle)
+		end
+		cb(ownedMafiaCars)
+	end)
+end)
+
+ESX.RegisterServerCallback('esx_advancedgarage:getOutOwnedBallasCars', function(source, cb)
+	local ownedBallasCars = {}
+
+	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND job = @job AND `stored` = @stored', {
+		['@owner'] = 'society:ballas',
+		['@job']    = 'ballas',
+		['@stored'] = false
+	}, function(data)
+		for _,v in pairs(data) do
+			local vehicle = json.decode(v.vehicle)
+			table.insert(ownedBallasCars, vehicle)
+		end
+		cb(ownedBallasCars)
+	end)
+end)
+
+ESX.RegisterServerCallback('esx_advancedgarage:getOutOwnedVagosCars', function(source, cb)
+	local ownedVagosCars = {}
+
+	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND job = @job AND `stored` = @stored', {
+		['@owner'] = 'society:vagos',
+		['@job']    = 'vagos',
+		['@stored'] = false
+	}, function(data)
+		for _,v in pairs(data) do
+			local vehicle = json.decode(v.vehicle)
+			table.insert(ownedVagosCars, vehicle)
+		end
+		cb(ownedVagosCars)
+	end)
+end)
+
+ESX.RegisterServerCallback('esx_advancedgarage:getOutOwnedFamiliesCars', function(source, cb)
+	local ownedFamiliesCars = {}
+
+	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND job = @job AND `stored` = @stored', {
+		['@owner'] = 'society:families',
+		['@job']    = 'families',
+		['@stored'] = false
+	}, function(data)
+		for _,v in pairs(data) do
+			local vehicle = json.decode(v.vehicle)
+			table.insert(ownedFamiliesCars, vehicle)
+		end
+		cb(ownedFamiliesCars)
+	end)
+end)
+
 -- Check Money for Pounded Aircrafts
 ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyAircrafts', function(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
@@ -364,12 +444,57 @@ ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyMechanic', function(sou
 	end
 end)
 
+ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyVigne', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.get('money') >= Config.VignePoundPrice then
+		cb(true)
+	else
+		cb(false)
+	end
+end)
+
+ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyMafia', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.get('money') >= Config.MafiaPoundPrice then
+		cb(true)
+	else
+		cb(false)
+	end
+end)
+
+ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyBallas', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.get('money') >= Config.BallasPoundPrice then
+		cb(true)
+	else
+		cb(false)
+	end
+end)
+
+ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyVagos', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.get('money') >= Config.VagosPoundPrice then
+		cb(true)
+	else
+		cb(false)
+	end
+end)
+
+ESX.RegisterServerCallback('esx_advancedgarage:checkMoneyFamilies', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.get('money') >= Config.FamiliesPoundPrice then
+		cb(true)
+	else
+		cb(false)
+	end
+end)
+
 -- Pay for Pounded Aircrafts
 RegisterServerEvent('esx_advancedgarage:payAircraft')
 AddEventHandler('esx_advancedgarage:payAircraft', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeMoney(Config.AircraftPoundPrice)
-	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.AircraftPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.AircraftPoundPrice)
 
 	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
 		account.addMoney(Config.AircraftPoundPrice)
@@ -381,7 +506,7 @@ RegisterServerEvent('esx_advancedgarage:payBoat')
 AddEventHandler('esx_advancedgarage:payBoat', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeMoney(Config.BoatPoundPrice)
-	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.BoatPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.BoatPoundPrice)
 
 	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
 		account.addMoney(Config.BoatPoundPrice)
@@ -393,7 +518,7 @@ RegisterServerEvent('esx_advancedgarage:payCar')
 AddEventHandler('esx_advancedgarage:payCar', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeMoney(Config.CarPoundPrice)
-	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.CarPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.CarPoundPrice)
 
 	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
 		account.addMoney(Config.CarPoundPrice)
@@ -405,7 +530,7 @@ RegisterServerEvent('esx_advancedgarage:payPolicing')
 AddEventHandler('esx_advancedgarage:payPolicing', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeMoney(Config.PolicingPoundPrice)
-	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.PolicingPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.PolicingPoundPrice)
 
 	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
 		account.addMoney(Config.PolicingPoundPrice)
@@ -417,7 +542,7 @@ RegisterServerEvent('esx_advancedgarage:payAmbulance')
 AddEventHandler('esx_advancedgarage:payAmbulance', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeMoney(Config.AmbulancePoundPrice)
-	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.AmbulancePoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.AmbulancePoundPrice)
 
 	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
 		account.addMoney(Config.AmbulancePoundPrice)
@@ -429,7 +554,7 @@ RegisterServerEvent('esx_advancedgarage:payTaxi')
 AddEventHandler('esx_advancedgarage:payTaxi', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeMoney(Config.TaxiPoundPrice)
-	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.TaxiPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.TaxiPoundPrice)
 
 	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
 		account.addMoney(Config.TaxiPoundPrice)
@@ -441,10 +566,70 @@ RegisterServerEvent('esx_advancedgarage:payMechanic')
 AddEventHandler('esx_advancedgarage:payMechanic', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeMoney(Config.MechanicPoundPrice)
-	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. Config.MechanicPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.MechanicPoundPrice)
 
 	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
 		account.addMoney(Config.MechanicPoundPrice)
+	end)
+end)
+
+-- Pay for Pounded vigne
+RegisterServerEvent('esx_advancedgarage:payVigne')
+AddEventHandler('esx_advancedgarage:payVigne', function()
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.removeMoney(Config.VignePoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.VignePoundPrice)
+
+	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+		account.addMoney(Config.VignePoundPrice)
+	end)
+end)
+
+-- Pay for Pounded mafia
+RegisterServerEvent('esx_advancedgarage:payMafia')
+AddEventHandler('esx_advancedgarage:payMafia', function()
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.removeMoney(Config.MafiaPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.MafiaPoundPrice)
+
+	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+		account.addMoney(Config.MafiaPoundPrice)
+	end)
+end)
+
+-- Pay for Pounded ballas
+RegisterServerEvent('esx_advancedgarage:payBallas')
+AddEventHandler('esx_advancedgarage:payBallas', function()
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.removeMoney(Config.BallasPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.BallasPoundPrice)
+
+	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+		account.addMoney(Config.BallasPoundPrice)
+	end)
+end)
+
+-- Pay for Pounded vagos
+RegisterServerEvent('esx_advancedgarage:payVagos')
+AddEventHandler('esx_advancedgarage:payVagos', function()
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.removeMoney(Config.VagosPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.VagosPoundPrice)
+
+	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+		account.addMoney(Config.VagosPoundPrice)
+	end)
+end)
+
+-- Pay for Pounded families
+RegisterServerEvent('esx_advancedgarage:payFamilies')
+AddEventHandler('esx_advancedgarage:payFamilies', function()
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.removeMoney(Config.FamiliesPoundPrice)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. Config.FamiliesPoundPrice)
+
+	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
+		account.addMoney(Config.FamiliesPoundPrice)
 	end)
 end)
 
@@ -453,7 +638,7 @@ RegisterServerEvent('esx_advancedgarage:payhealth')
 AddEventHandler('esx_advancedgarage:payhealth', function(price)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeMoney(price)
-	TriggerClientEvent('esx:showNotification', source, _U('you_paid') .. price)
+	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé $' .. price)
 
 	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_mechanic', function(account)
 		account.addMoney(price)
