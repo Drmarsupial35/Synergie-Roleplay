@@ -1,13 +1,10 @@
-fx_version 'adamant'
-
-game 'gta5'
+resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
 
 description 'ESX Vehicle Shop'
 
 version '1.1.0'
 
 server_scripts {
-	'@async/async.lua',
 	'@mysql-async/lib/MySQL.lua',
 	'@es_extended/locale.lua',
 	'locales/br.lua',
@@ -16,7 +13,6 @@ server_scripts {
 	'locales/fr.lua',
 	'locales/sv.lua',
 	'locales/pl.lua',
-	'locales/cs.lua',
 	'config.lua',
 	'server/main.lua'
 }
@@ -29,7 +25,6 @@ client_scripts {
 	'locales/fr.lua',
 	'locales/sv.lua',
 	'locales/pl.lua',
-	'locales/cs.lua',
 	'config.lua',
 	'client/utils.lua',
 	'client/main.lua'
