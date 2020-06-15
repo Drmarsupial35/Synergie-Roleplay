@@ -1,7 +1,7 @@
 # Synergie Roleplay
 
 <p align="center">
-  <img src="Discord/ressources/img/logo.png" alt="Synergie"/>
+  <img src="Discord/ressources/img/logo_carré.png" alt="Synergie"/>
 </p>
 
 
