@@ -20,8 +20,11 @@ async def on_member_join(member):
     guild = client.get_guild(661382511976513556) # Le serveur FiveM
     sansPapiers = guild.get_role(664210809940869157) # Le role @📦Sans Papier
     aeroport = client.get_channel(665701196505415702) # Le channel #aéroport
+    douanes = client.get_channel(664222523252277273) # Le channel douanes
     await member.add_roles(sansPapiers)
-    await aeroport.send(':tada:Bienvenue ' + member.mention + ' !\n:warning:N\'oublie pas de mettre un Prénom & Nom RP !')
+    await aeroport.send(':tada:Bienvenue ' + member.mention + ' !'
+                                                              '\n:warning:N\'oublie pas de mettre un Prénom & Nom RP !'
+                                                              '\n:construction:Rends-toi dans le bureau des ' + douanes.mention + ' pour obtenir tes papiers et avoir accès à l\'entièreté du serveur:construction:')
 
 
 # Lorsqu'une réaction est ajoutée à un message
