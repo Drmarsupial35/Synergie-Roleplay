@@ -24,7 +24,7 @@ async def on_member_join(member):
     await member.add_roles(sansPapiers)
     await aeroport.send(':tada:Bienvenue ' + member.mention + ' !'
                                                               '\n:warning:N\'oublie pas de mettre un Prénom & Nom RP !'
-                                                              '\n:construction:Rends-toi dans le bureau des ' + douanes.mention + ' pour obtenir tes papiers et avoir accès à l\'entièreté du serveur:construction:')
+                                                              '\n:construction:Rends-toi dans le bureau des ' + douanes.mention + ' pour obtenir tes papiers et avoir accès à l\'entièreté du serveur')
 
 
 # Lorsqu'une réaction est ajoutée à un message
