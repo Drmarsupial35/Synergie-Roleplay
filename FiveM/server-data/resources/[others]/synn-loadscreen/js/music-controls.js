@@ -45,11 +45,11 @@ function UpdateMusicInfo()
 
     if(title.length != 0)
     {
-        np.innerHTML = "Now playing: " + title;
+        np.innerHTML = "Musique: " + title;
     }
     else
     {
-        np.innerHTML = "Now playing: n.a.";
+        np.innerHTML = "Musique: n.a.";
     }
 }
 

@@ -21,7 +21,7 @@ var config =
         The values are: [width, height].
         Recommended to use square images less than 1024px.
     */
-    imageSize: [512, 512],
+    imageSize: [514.5, 446.625],
 
     /*
         Define the progressbar type
