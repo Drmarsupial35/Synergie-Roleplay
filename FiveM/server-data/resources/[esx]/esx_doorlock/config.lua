@@ -239,8 +239,8 @@ Config.DoorList = {
 
 		-- Armory
 		{
-			objName = 'v_ilev_arm_secdoor',
-			objYaw = -90.0,
+			objName = 'v_ilev_gtdoor',
+			objYaw = 90.0,
 			objCoords  = vector3(452.6, -982.7, 30.6),
 			textCoords = vector3(453.0, -982.6, 31.7),
 			authorizedJobs = { 'police' },

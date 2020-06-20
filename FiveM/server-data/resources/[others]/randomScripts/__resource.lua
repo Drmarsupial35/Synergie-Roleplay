@@ -11,5 +11,6 @@ client_scripts {
 	'client/noNPCDrop.lua',
 	'client/noVehiculeReward.lua',
 	'client/Ko.lua',
-	'client/no_drive_by.lua'
+	'client/no_drive_by.lua',
+	'client/pvp.lua'
 }
