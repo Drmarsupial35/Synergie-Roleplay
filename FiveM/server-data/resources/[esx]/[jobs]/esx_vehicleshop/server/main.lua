@@ -82,7 +82,7 @@ AddEventHandler('esx_vehicleshop:setVehicleOwnedSociety', function(society, vehi
 		['@owner']   = 'society:' .. society,
 		['@plate']   = vehicleProps.plate,
 		['@vehicle'] = json.encode(vehicleProps),
-		['@job'] = xPlayer.job,
+		['@job'] = society,
 	}, function(rowsChanged) end)
 end)
 
