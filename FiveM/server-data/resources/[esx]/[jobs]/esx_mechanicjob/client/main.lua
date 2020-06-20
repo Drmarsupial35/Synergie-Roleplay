@@ -108,9 +108,14 @@ function OpenMechanicActionsMenu()
 						align    = 'top-left',
 						elements = elements
 					}, function(data, menu)
-						menu.close()
-						local vehicleProps = data.current.value
+						if not ESX.Game.IsSpawnPointClear(Config.Zones.VehicleSpawnPoint.Pos, 5.0) then
+							ESX.ShowNotification('Le point d\'apparition est bloqué !')
+							return
+						end
 
+						menu.close()
+
+						local vehicleProps = data.current.value
 						ESX.Game.SpawnVehicle(vehicleProps.model, Config.Zones.VehicleSpawnPoint.Pos, 180.0, function(vehicle)
 							ESX.Game.SetVehicleProperties(vehicle, vehicleProps)
 							local playerPed = PlayerPedId()
