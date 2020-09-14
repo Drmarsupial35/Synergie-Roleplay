@@ -1,7 +1,7 @@
 # Synergie Roleplay
 
 <p align="center">
-  <img src="ressources/img/logo_rond.png" alt="Synergie"/>
+  <img width="512" height="512" src="ressources/img/logo_rond.png" alt="Synergie"/>
 </p>
 
 Synergie Roleplay est un serveur Roleplay français sur GTA V (FiveM) utilisant le [Framework **ESX**](https://forum.cfx.re/t/release-esx-base/39881).
@@ -34,7 +34,7 @@ D'autres documents ont été réalisés pour le serveur dont voici les liens :
 - [Formulaire de création de Gang](https://drive.google.com/file/d/1d4OIor70Z6XlqtArp13lcAOARP3KePJ2/view?usp=sharing) & [Formulaire de mort RP](https://drive.google.com/file/d/1T8wi9TK8rDSrrxJFGahvIWNyuZDT4Ez0/view?usp=sharing)
 - [Liste des Infractions](https://docs.google.com/spreadsheets/d/1LDVsO_F3Gaua52ESS1WEy8IArkyAQvj6EMlBJLKIRbY/edit?usp=sharing)
 
-##Membres du Staff
+## Membres du Staff
 
 
 | Pseudo          | Nom RP          | Rôle           |
