@@ -1,29 +1,48 @@
 # Synergie Roleplay
 
 <p align="center">
-  <img src="Discord/ressources/img/logo_rond.png" alt="Synergie"/>
+  <img src="ressources/img/logo_rond.png" alt="Synergie"/>
 </p>
 
+Synergie Roleplay est un serveur Roleplay français sur GTA V (FiveM) utilisant le [Framework **ESX**](https://forum.cfx.re/t/release-esx-base/39881).
 
-Dépot contenant les différents dossier du serveur Synergie Roleplay (Serveur GTA V Roleplay). Il utilise le [Framework **ESX**](https://forum.cfx.re/t/release-esx-base/39881).
+Ce serveur est désormais fermé par manque de joueurs et de motivation mais je laisse mes scripts modifiés à disposition.
 
-Le bot Discord est codé en **Python** et permet d'effectuer différentes commandes :
-- Système de tickets
-- Affectation automatique de rôles
-- Création de messages **Embed**
-- Ouverture et Fermeture de salons
-- Ajout de réations sur des messages
+# Fonctionnalités proposées
 
-## Lancement
+- Double Job
+- Métiers Pôle-Emploi (Intérim) & WhiteList (CDI)
+- Gangs / Organisations & Drogues
+- Système de prison réaliste (Cellules, Parloir, Travail pour les prisonniers, ...)
+- Système de modération (Logs des actions, bannissement, spectate, ...)
+
+## Lancement du serveur
 
 ```shell
-cd FiveM/server-data && ./runserver.sh
+cd server-data && ./runserver.sh
 ```
 
-## Liens divers
+Il faut également configurer le reboot automatique du serveur à l'aide du fichier **reload_fxserver.sh** qui s'occupe d'éteindre le serveur,
+vider son cache et le redémarrer
 
-*Invitation Discord :* **https://discordapp.com/invite/SqAE8Jg**
+## Autres ressources
 
-*Lien Top Serveur :* **https://top-serveurs.net/gta/synergie-roleplay**
+Le logo du serveur à été réalisé par **Kscie #4875**
 
-*Adresse IP:* **185.44.81.48**
+D'autres documents ont été réalisés pour le serveur dont voici les liens :
+- [Règlement](https://drive.google.com/file/d/1F0_8oeZ93r6K6NZsMjFmYhbKfLDOu2St/view?usp=sharing)
+- [Formulaire de création de Gang](https://drive.google.com/file/d/1d4OIor70Z6XlqtArp13lcAOARP3KePJ2/view?usp=sharing) & [Formulaire de mort RP](https://drive.google.com/file/d/1T8wi9TK8rDSrrxJFGahvIWNyuZDT4Ez0/view?usp=sharing)
+- [Liste des Infractions](https://docs.google.com/spreadsheets/d/1LDVsO_F3Gaua52ESS1WEy8IArkyAQvj6EMlBJLKIRbY/edit?usp=sharing)
+
+##Membres du Staff
+
+
+| Pseudo          | Nom RP          | Rôle           |
+| --------------- | --------------- | -------------- |
+| Drmarsupial35   | Charlie Brown   | Fondateur      |
+| Rtoko           | Thomas Tijuana  | Administrateur |
+| Lasbinouze      | Léo Constantine | Administrateur |
+| Tyrex           | Jeremy Lachinov | Modérateur     |
+| Mathys          | Jeremy Boulogne | Modérateur     |
+| LPG             | Martin Tintet   | Helpeur        |
+| Kscie           |                 | Graphiste      |
