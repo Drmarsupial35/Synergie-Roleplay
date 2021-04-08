@@ -27,7 +27,7 @@ vider son cache et le redémarrer
 
 ## Autres ressources
 
-Le logo du serveur à été réalisé par **Kscie #4875**
+Le logo du serveur à été réalisé par **Kscie#4875** (Discord)
 
 D'autres documents ont été réalisés pour le serveur dont voici les liens :
 - [Règlement](https://drive.google.com/file/d/1F0_8oeZ93r6K6NZsMjFmYhbKfLDOu2St/view?usp=sharing)
